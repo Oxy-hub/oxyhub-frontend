@@ -1,12 +1,11 @@
 import React from 'react';
-
-const App = ()=>{
-    return(
-        <div>
-            Hi from App.js!
-        </div>
-
-    )
-}
+import Login from './components/Login/login';
+const App = () => {
+  return (
+    <>
+      <Login />
+    </>
+  );
+};
 
 export default App;
