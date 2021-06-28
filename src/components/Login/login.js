@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Heading, Container, Form } from './login.styled';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+const axios = require('axios');
 
 const Login = () => {
   const [formState, setFormState] = useState({ phno: '', otp: '' });
-
+  const [isSignedIn, setIsSignedIn] = useState(false);
   useEffect(() => {
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
       size: 'invisible',
@@ -38,8 +39,12 @@ const Login = () => {
       .confirm(formState.otp)
       .then(result => {
         // User signed in successfully.
-        const user = result.user;
-        alert('You are signed in successfully');
+        result.user.getIdToken().then(id => {
+          console.log('on successful login id is : ', id);
+          alert('You are signed in successfully');
+          setIsSignedIn(true);
+        });
+
         // ...
       })
       .catch(error => {
