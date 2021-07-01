@@ -4,17 +4,18 @@ import axios from 'axios';
 export const getTokens = idToken => {
   return dispatch => {
     axios
-      .post('http://localhost:8000/auth', {
-        headers: { 'Content-Type': 'application/json' },
-        data: {
+      .post(
+        'http://localhost:8000/auth',
+        {
           idToken: idToken,
         },
-      })
+        { withCredentials: true }
+      )
       .then(response => {
-        console.log(response.data);
+        console.log('this is response', response.data);
         dispatch({
           type: STORE_ACCESS_TOKEN,
-          payload: response.data.status, //TEMPORARY
+          payload: response.data, //TEMPORARY
         });
       });
   };
