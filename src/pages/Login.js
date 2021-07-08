@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Heading, Container, Form } from './login.styled';
-import { getTokens } from '../../store/actions/getTokens';
+import { Heading, Container, Form } from '../components/Login/login.styled';
+import { getUser } from '../store/actions/getUser';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
@@ -44,7 +44,7 @@ const Login = () => {
         result.user.getIdToken().then(id => {
           console.log('on successful login id is : ', id);
           alert('You are signed in successfully');
-          dispatch(getTokens(id));
+          dispatch(getUser(id));
         });
 
         // ...

@@ -1,7 +1,7 @@
-import { STORE_ACCESS_TOKEN } from '../constants';
+import { STORE_USER, STORE_INITIAL_USER } from '../constants';
 import axios from 'axios';
 
-export const getTokens = idToken => {
+export const getUser = idToken => {
   return dispatch => {
     axios
       .post(
@@ -12,10 +12,9 @@ export const getTokens = idToken => {
         { withCredentials: true }
       )
       .then(response => {
-        console.log('this is response', response.data);
         dispatch({
-          type: STORE_ACCESS_TOKEN,
-          payload: response.data, //TEMPORARY
+          type: response.data.first_name ? STORE_USER : STORE_INITIAL_USER,
+          payload: response.data,
         });
       });
   };
