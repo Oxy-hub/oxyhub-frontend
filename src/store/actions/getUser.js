@@ -9,7 +9,7 @@ export const getUser = idToken => {
         {
           idToken: idToken,
         },
-        { withCredentials: true }
+        { withCredentials: true } //credentials : cookies.SSL certificate etc.
       )
       .then(response => {
         dispatch({

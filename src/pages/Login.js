@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Heading, Container, Form } from '../components/Login/login.styled';
 import { getUser } from '../store/actions/getUser';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
-const Login = () => {
+const Login = props => {
+  const isInitial = useSelector(state => state.auth.isInitial);
   const [formState, setFormState] = useState({ phno: '', otp: '' });
-  const accessToken = useSelector(state => state.auth.accessToken);
+  // const accessToken = useSelector(state => state.auth.accessToken);
   const dispatch = useDispatch();
   useEffect(() => {
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
@@ -51,7 +53,7 @@ const Login = () => {
       })
       .catch(error => {
         // User couldn't sign in (bad verification code?)
-        // ...
+        console.log("Couldn't sign in! Bad verification code...");
       });
   };
 
@@ -59,36 +61,41 @@ const Login = () => {
     setFormState({ ...formState, [name]: value });
   };
 
-  console.log(formState);
-  return (
-    <Container>
-      <Heading>Login</Heading>
-      <Form onSubmit={e => e.preventDefault()}>
-        <input
-          type='text'
-          name='phno'
-          placeholder='Enter mobile number'
-          value={formState.phno}
-          onChange={e => updateForm(e.target.value, e.target.name)}
-        />
-        <br />
-        <button id='sign-in-button' onClick={getOtp}>
-          Get OTP
-        </button>
-        <br />
-        <input
-          type='text'
-          name='otp'
-          placeholder='Enter your OTP'
-          value={formState.otp}
-          onChange={e => updateForm(e.target.value, e.target.name)}
-        />
-        <br />
-        <button onClick={confirmOtp}>Submit OTP</button>
-      </Form>
-      {accessToken && <h1>Welcome to our app</h1>}
-    </Container>
-  );
+  // console.log(formState);
+
+  if (isInitial) {
+    return <Redirect to='/register' />;
+  } else {
+    return (
+      <Container>
+        <Heading>Login</Heading>
+        <Form onSubmit={e => e.preventDefault()}>
+          <input
+            type='text'
+            name='phno'
+            placeholder='Enter mobile number'
+            value={formState.phno}
+            onChange={e => updateForm(e.target.value, e.target.name)}
+          />
+          <br />
+          <button id='sign-in-button' onClick={getOtp}>
+            Get OTP
+          </button>
+          <br />
+          <input
+            type='text'
+            name='otp'
+            placeholder='Enter your OTP'
+            value={formState.otp}
+            onChange={e => updateForm(e.target.value, e.target.name)}
+          />
+          <br />
+          <button onClick={confirmOtp}>Submit OTP</button>
+        </Form>
+        <Link to='/register'>Register</Link>
+      </Container>
+    );
+  }
 };
 
 export default Login;
