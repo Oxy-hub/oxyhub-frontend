@@ -1,17 +1,30 @@
-import {FormWrapper} from './login.styled';
+import {
+	FormWrapper,
+	Heading,
+	LoginWrapper,
+	BackgroundContainer,
+	Disclaimer,
+} from './login.styled';
 import Form from './Form';
 import Graphic from './Graphic';
 
 const Login = () => {
 	return (
-		<>
-			<div style={{width: '50%', margin: '0 auto'}}>
+		<BackgroundContainer>
+			<LoginWrapper>
+				<Heading>
+					<h1>Oxyhub</h1>
+				</Heading>
 				<FormWrapper>
 					<Form />
 					<Graphic />
 				</FormWrapper>
-			</div>
-		</>
+				<Disclaimer>
+					Disclaimer : This application is not meant to be used as a real life
+					application.
+				</Disclaimer>
+			</LoginWrapper>
+		</BackgroundContainer>
 	);
 };
 
