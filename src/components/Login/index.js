@@ -5,7 +5,7 @@ import {
 	BackgroundContainer,
 	Disclaimer,
 } from './login.styled';
-import Form from './Form';
+import Form from './LoginForm';
 import Graphic from './Graphic';
 
 const Login = () => {

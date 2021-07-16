@@ -11,7 +11,7 @@ const App = () => {
 	useEffect(() => {
 		WebFont.load({
 			google: {
-				families: ['Poppins'],
+				families: ['Poppins:400,500,600,700'],
 			},
 		});
 	}, []);
