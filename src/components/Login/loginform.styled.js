@@ -10,8 +10,18 @@ export const FormContainer = styled.div`
 	}
 `;
 
+export const Form = styled.form`
+	padding: 0 2em;
+
+	div {
+		.error {
+			color: ${pallete.primary};
+			font-size: 13px;
+		}
+	}
+`;
+
 export const InputContainer = styled.div`
-	margin-bottom: 1.8em;
 	display: flex;
 	border-radius: 5px;
 	border: 1px solid ${props => (!props.active ? '#d3d3d3' : pallete.primary)};

@@ -9,7 +9,8 @@ import 'firebase/auth';
 import Login from '../components/Login';
 
 const LoginPage = props => {
-	// const isInitial = useSelector(state => state.auth.isInitial);
+	const {isInitial, isAuthenticated} = useSelector(state => state.auth);
+
 	// const [formState, setFormState] = useState({phno: '', otp: ''});
 	// // const accessToken = useSelector(state => state.auth.accessToken);
 	// const dispatch = useDispatch();
@@ -105,11 +106,13 @@ const LoginPage = props => {
 	// 	<Link to='/register'>Register</Link>
 	// </Container>
 	// );
-	return (
-		<>
-			<Login />
-		</>
-	);
+	if (isInitial) {
+		return <Redirect to='/register' />;
+	} else if (isAuthenticated) {
+		return <Redirect to='/app' />;
+	} else {
+		return <Login />;
+	}
 };
 
 export default LoginPage;

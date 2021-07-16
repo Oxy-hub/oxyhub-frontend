@@ -5,7 +5,7 @@ import {
 	BackgroundContainer,
 	Disclaimer,
 } from './login.styled';
-import Form from './LoginForm';
+import LoginForm from './LoginForm';
 import Graphic from './Graphic';
 
 const Login = () => {
@@ -13,10 +13,10 @@ const Login = () => {
 		<BackgroundContainer>
 			<LoginWrapper>
 				<Heading>
-					<h1>Oxyhub</h1>
+					<h1 style={{textAlign: 'center'}}>Oxyhub</h1>
 				</Heading>
 				<FormWrapper>
-					<Form />
+					<LoginForm />
 					<Graphic />
 				</FormWrapper>
 				<Disclaimer>
