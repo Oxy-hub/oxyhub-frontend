@@ -26,7 +26,7 @@ export const Form = styled(FormikForm)`
 `;
 
 export const InputWrapper = styled.div`
-	margin-bottom: 1.8em;
+	margin-bottom: 1.7em;
 	position: relative;
 `;
 
@@ -56,20 +56,4 @@ export const InputContainer = styled.div`
 			opacity: 0.5;
 		}
 	}
-`;
-
-export const SubmitButton = styled.button`
-	outline: none;
-	border: none;
-	width: 100%;
-	padding: 1em;
-	font-size: 0.95rem;
-	font-weight: 600;
-	letter-spacing: 1px;
-	cursor: pointer;
-	color: white;
-	border-radius: 5px;
-	background-color: ${pallete.primary};
-	box-shadow: 0px 12px 24px -12px rgba(255, 114, 94, 0.5);
-	-webkit-box-shadow: 0px 12px 24px -12px rgba(255, 114, 94, 0.5);
 `;

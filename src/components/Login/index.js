@@ -1,3 +1,4 @@
+import {useSelector} from 'react-redux';
 import {
 	FormWrapper,
 	Heading,
@@ -8,7 +9,7 @@ import {
 import LoginForm from './LoginForm';
 import Graphic from './Graphic';
 
-const Login = () => {
+const Login = ({getOtp, confirmOtp}) => {
 	return (
 		<BackgroundContainer>
 			<LoginWrapper>
@@ -16,7 +17,7 @@ const Login = () => {
 					<h1 style={{textAlign: 'center'}}>Oxyhub</h1>
 				</Heading>
 				<FormWrapper>
-					<LoginForm />
+					<LoginForm getOtp={getOtp} />
 					<Graphic />
 				</FormWrapper>
 				<Disclaimer>
