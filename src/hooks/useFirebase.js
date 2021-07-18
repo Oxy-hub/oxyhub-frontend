@@ -11,7 +11,7 @@ const useFirebase = () => {
 	useEffect(() => {
 		window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('get-otp', {
 			size: 'invisible',
-			callback: response => {
+			callback: _ => {
 				getOtp();
 			},
 		});
@@ -20,7 +20,7 @@ const useFirebase = () => {
 	const getOtp = async phone_number => {
 		try {
 			dispatch(storePhoneNumber(phone_number));
-			phone_number = '+91' + phone_number;
+			phone_number = '+91' + '121-609-1151';
 			const confirmationResult = await firebase
 				.auth()
 				.signInWithPhoneNumber(phone_number, window.recaptchaVerifier);

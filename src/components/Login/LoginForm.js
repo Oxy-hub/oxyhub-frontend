@@ -21,7 +21,8 @@ const LoginForm = ({getOtp}) => {
 	return (
 		<FormContainer>
 			<FormHeader />
-			<Formik
+			<button>Login with Github</button>
+			{/* <Formik
 				initialValues={{
 					phone_number,
 				}}
@@ -33,18 +34,22 @@ const LoginForm = ({getOtp}) => {
 						.length(10, 'Must be 10 digits!')
 						.matches(/^[1-9]\d{9}$/, 'Invalid Phone Number'),
 				})}
-				onSubmit={async values => {
+				onSubmit={async (values, formik) => {
 					try {
-						setIsLoading(state => !state);
-						await getOtp(values.phone_number);
-						if (!otpSend) throw new Error();
+						setIsLoading(true);
+
+						getOtp(values.phone_number);
+
+						setIsLoading(false);
+						formik.setSubmitting(false);
+						// if (!otpSend) throw new Error();
 					} catch (e) {
-						console.log('hello');
-						setIsLoading(state => !state);
+						// console.log('hello');
+						// setIsLoading(false);
 					}
 				}}>
 				{formik => (
-					<Form autoComplete='off'>
+					<Form onSubmit={formik.handleSubmit} autoComplete='off'>
 						<InputWrapper>
 							<InputContainer active={isInputSelected}>
 								<span>+91</span>
@@ -73,12 +78,15 @@ const LoginForm = ({getOtp}) => {
 								{msg => <span className='error'>{msg}</span>}
 							</ErrorMessage>
 						</InputWrapper>
-						<FormButton id='get-otp' isLoading={isLoading}>
+						<FormButton
+							id='get-otp'
+							isLoading={isLoading}
+							disabled={formik.isSubmitting}>
 							Get OTP
 						</FormButton>
 					</Form>
 				)}
-			</Formik>
+			</Formik> */}
 		</FormContainer>
 	);
 };

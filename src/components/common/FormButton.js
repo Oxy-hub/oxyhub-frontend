@@ -1,9 +1,9 @@
 import {Button} from './formbutton.styled';
 
-const FormButton = ({children: text, isActive, isLoading, id}) => {
+const FormButton = ({children: text, ...props}) => {
 	return (
 		<>
-			<Button id={id} type='submit' isLoading={isLoading}>
+			<Button {...props} type='submit'>
 				{text}
 			</Button>
 		</>
