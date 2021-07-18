@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import pallete from '../../utils/pallete';
+import {Form as FormikForm} from 'formik';
 
 export const FormContainer = styled.div`
 	width: 50%;
@@ -10,15 +11,23 @@ export const FormContainer = styled.div`
 	}
 `;
 
-export const Form = styled.form`
+export const Form = styled(FormikForm)`
 	padding: 0 2em;
 
 	div {
 		.error {
 			color: ${pallete.primary};
 			font-size: 13px;
+			position: absolute;
+			bottom: -1.8em;
+			left: 0.3em;
 		}
 	}
+`;
+
+export const InputWrapper = styled.div`
+	margin-bottom: 1.8em;
+	position: relative;
 `;
 
 export const InputContainer = styled.div`
@@ -43,6 +52,7 @@ export const InputContainer = styled.div`
 		background: transparent;
 		padding: 0.95em 0;
 		::placeholder {
+			text-overflow: ellipsis;
 			opacity: 0.5;
 		}
 	}

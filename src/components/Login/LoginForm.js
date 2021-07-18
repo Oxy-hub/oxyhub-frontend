@@ -4,6 +4,7 @@ import * as yup from 'yup';
 import {
 	FormContainer,
 	SubmitButton,
+	InputWrapper,
 	InputContainer,
 	Form,
 } from './loginform.styled';
@@ -23,22 +24,27 @@ const LoginForm = () => {
 						.string()
 						.trim()
 						.required('Cannot Be Empty!')
+						.length(10, 'Must be 10 digits!')
 						.matches(/^[6-9]\d{9}$/, 'Invalid Phone Number'),
 				})}
 				onSubmit={() => {}}>
 				{formik => (
-					<Form onSubmit={formik.handleSubmit}>
-						<div style={{marginBottom: '1.8em'}}>
+					<Form autoComplete='off'>
+						<InputWrapper>
 							<InputContainer active={isInputSelected}>
 								<span>+91</span>
 								<input
 									type='tel'
-									id='phone_number'
 									name='phone_number'
 									maxLength='10'
 									placeholder='Continue with mobile number'
 									value={formik.values.phone_number}
-									onChange={formik.handleChange}
+									onKeyPress={e => {
+										if (!(e.key >= '0' && e.key <= '9')) e.preventDefault();
+									}}
+									onChange={e => {
+										formik.handleChange(e);
+									}}
 									onFocus={() => {
 										setIsInputSelected(true);
 									}}
@@ -51,7 +57,7 @@ const LoginForm = () => {
 							<ErrorMessage name='phone_number'>
 								{msg => <span className='error'>{msg}</span>}
 							</ErrorMessage>
-						</div>
+						</InputWrapper>
 						<SubmitButton>Get OTP</SubmitButton>
 					</Form>
 				)}
