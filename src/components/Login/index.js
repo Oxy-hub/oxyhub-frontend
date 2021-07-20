@@ -1,25 +1,24 @@
-import {useSelector} from 'react-redux';
 import {
-	FormWrapper,
+	SocialAuthWrapper,
 	Heading,
 	LoginWrapper,
 	BackgroundContainer,
 	Disclaimer,
 } from './login.styled';
-import LoginForm from './LoginForm';
-import Graphic from './Graphic';
+import SocialAuth from './components/SocialAuth';
+import Graphic from './components/Graphic';
 
-const Login = ({getOtp, confirmOtp}) => {
+const Login = () => {
 	return (
 		<BackgroundContainer>
 			<LoginWrapper>
 				<Heading>
 					<h1 style={{textAlign: 'center'}}>Oxyhub</h1>
 				</Heading>
-				<FormWrapper>
-					<LoginForm getOtp={getOtp} />
+				<SocialAuthWrapper>
+					<SocialAuth />
 					<Graphic />
-				</FormWrapper>
+				</SocialAuthWrapper>
 				<Disclaimer>
 					Disclaimer : This application is not meant to be used as a real life
 					application.

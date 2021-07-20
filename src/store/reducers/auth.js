@@ -1,7 +1,7 @@
 import {STORE_INITIAL_USER, STORE_USER} from '../constants';
 
 const initialState = {
-	phone_number: null,
+	email: null,
 	first_name: null,
 	last_name: null,
 	id_number: null,
@@ -15,7 +15,7 @@ const authReducer = (state = initialState, action) => {
 		case STORE_INITIAL_USER:
 			return {
 				...state,
-				phone_number: action.payload.phone_number,
+				email: action.payload.email,
 				isInitial: true,
 			};
 

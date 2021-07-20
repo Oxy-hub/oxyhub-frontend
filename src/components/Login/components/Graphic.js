@@ -1,6 +1,6 @@
 import React from 'react';
 import {GraphicContainer} from './graphic.styled';
-import {ReactComponent as LoginGraphic} from '../../assets/oxyhub_login.svg';
+import {ReactComponent as LoginGraphic} from '../../../assets/oxyhub_login.svg';
 
 const Graphic = () => {
 	return (

@@ -1,11 +1,9 @@
 import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import authReducer from './reducers/auth';
-import formReducer from './reducers/form';
 import thunk from 'redux-thunk';
 
 const rootReducer = combineReducers({
 	auth: authReducer,
-	form: formReducer,
 });
 
 const store = createStore(

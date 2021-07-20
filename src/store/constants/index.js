@@ -1,7 +1,2 @@
 export const STORE_INITIAL_USER = 'STORE_INITIAL_USER';
 export const STORE_USER = 'STORE_USER';
-
-export const STORE_PHONE = 'STORE_PHONE';
-export const OTP_SEND = 'OTP_SEND';
-export const OTP_CONFIRMED = 'OTP_CONFIRMED';
-export const CLEAR_PHONE_NUMBER = 'CLEAR_PHONE_NUMBER';
