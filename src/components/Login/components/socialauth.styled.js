@@ -11,6 +11,10 @@ export const SocialAuthContainer = styled.div`
 
 export const ButtonContainer = styled.div`
 	padding: 0 3em;
+
+	@media (max-width: 1100px) {
+		padding: 0;
+	}
 `;
 
 // export const Form = styled(FormikForm)`
