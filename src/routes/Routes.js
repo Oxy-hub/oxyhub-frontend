@@ -1,20 +1,23 @@
-import {Switch, Redirect} from 'react-router-dom';
+import { Switch, Redirect } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import InitialRoute from './InitialRoute';
+import CallbackRoute from './CallbackRoute';
 import LoginPage from '../pages/LoginPage';
 import Register from '../pages/Register';
+import CallbackPage from '../pages/CallbackPage';
 import App from '../pages/App';
 
 const Routes = () => {
-	return (
-		<Switch>
-			<PublicRoute exact path='/' component={LoginPage} />
-			<InitialRoute path='/register' component={Register} />
-			<PrivateRoute path='/app' component={App} />
-			<Redirect from='/*' to='/' />
-		</Switch>
-	);
+  return (
+    <Switch>
+      <PublicRoute exact path='/' component={LoginPage} />
+      <CallbackRoute path='/auth/github/callback' component={CallbackPage} />
+      <InitialRoute path='/register' component={Register} />
+      <PrivateRoute path='/app' component={App} />
+      <Redirect from='/*' to='/' />
+    </Switch>
+  );
 };
 
 export default Routes;
