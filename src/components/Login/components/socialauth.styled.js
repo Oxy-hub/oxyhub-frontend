@@ -9,6 +9,10 @@ export const SocialAuthContainer = styled.div`
 	}
 `;
 
+export const ButtonContainer = styled.div`
+	padding: 0 3em;
+`;
+
 // export const Form = styled(FormikForm)`
 // 	padding: 0 2em;
 
