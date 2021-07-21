@@ -1,8 +1,8 @@
-import {Button} from './socialauthbutton.styled';
+import {Button, IconContainer} from './socialauthbutton.styled';
 const SocialAuthButton = ({children, last, helper, icon, ...props}) => {
 	return (
 		<Button last={last} onClick={helper} {...props}>
-			{/* <IconContainer>{icon}</IconContainer> */}
+			<IconContainer>{icon}</IconContainer>
 			{children}
 		</Button>
 	);

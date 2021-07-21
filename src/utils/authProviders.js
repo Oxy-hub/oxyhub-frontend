@@ -2,15 +2,14 @@ import React from 'react';
 import * as authHelpers from './authHelpers';
 import {FcGoogle} from 'react-icons/fc';
 import {FaGithub} from 'react-icons/fa';
-const size = '18px';
+const size = '20px';
 const authProviders = [
 	{
 		provider: 'Google',
 		text: 'Login With Google',
 		icon: <FcGoogle size={size} />,
 		background: 'transparent',
-		color: '#000000',
-
+		color: '#414141',
 		helper: authHelpers.googleAuthHelper,
 	},
 	{

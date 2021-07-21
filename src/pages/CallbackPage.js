@@ -1,35 +1,40 @@
-import { useEffect } from 'react';
+import {useEffect} from 'react';
+import Loading from '../components/common/Loading';
 import axios from 'axios';
-const Callback = props => {
-  const sendAuthToken = async code => {
-    try {
-      const response = await axios.get('http://localhost:8000/auth/github', {
-        params: {
-          code,
-        },
-        withCredentials: true,
-      });
-      props.history.push('/app');
-    } catch (err) {
-      console.log('Error while sending auth code : ', err);
-      // props.history.push('/error')
-    }
-  };
-  useEffect(() => {
-    localStorage.removeItem('isLogginIn');
-    const query = new URLSearchParams(props.location.search);
-    const code = query.get('code');
-    const state = query.get('state');
+const Callback = ({location, history}) => {
+	const sendAuthToken = async code => {
+		try {
+			const response = await axios.get('http://localhost:8000/auth/github', {
+				params: {
+					code,
+				},
+				withCredentials: true,
+			});
+			history.push('/app');
+		} catch (err) {
+			history.push('/error');
+		}
+	};
 
-    if (code && localStorage.getItem('state') === state) {
-      localStorage.removeItem('state');
-      sendAuthToken(code);
-    } else {
-      // props.history.push('/error');
-      props.history.push('/');
-    }
-  }, []);
-  return <div>You are in Callback page</div>;
+	useEffect(() => {
+		// Remove the isLoggedIn state from localstorage immediately on mount
+		localStorage.removeItem('isLoggingIn');
+		// Extract the query string parameters
+		const query = new URLSearchParams(location.search);
+		const code = query.get('code');
+		const state = query.get('state');
+
+		if (code && localStorage.getItem('state') === state) {
+			// Remove OAuth state parameter immediately after confirmation
+			localStorage.removeItem('state');
+			//Make a call to the backend
+			sendAuthToken(code);
+		} else {
+			history.push('/');
+		}
+	}, [history]);
+
+	return <Loading />;
 };
 
 export default Callback;
