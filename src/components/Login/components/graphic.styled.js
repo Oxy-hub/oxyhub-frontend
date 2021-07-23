@@ -5,7 +5,7 @@ export const GraphicContainer = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: ${pallete.bg};
+	background-color: ${pallete.bgGraphic};
 
 	@media (max-width: 1100px) {
 		display: none;
