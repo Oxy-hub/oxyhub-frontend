@@ -7,7 +7,7 @@ export const RegisterContainer = styled.div`
 	display: flex;
 `;
 export const GraphicSection = styled.section`
-	width: 575px;
+	width: 550px;
 	display: flex;
 	align-items: center;
 	background-color: ${pallete.bgGraphic};
@@ -22,10 +22,6 @@ export const GraphicSection = styled.section`
 export const GraphicContainer = styled.div`
 	width: 90%;
 	margin: 0 auto;
-	// border: 1px solid green;
 `;
-export const RegisterFormSection = styled.section`
-	// border: 1px solid blue;
-	// width: 70%;
-`;
+export const RegisterFormSection = styled.section``;
 export const RegisterFormContainer = styled.div``;
