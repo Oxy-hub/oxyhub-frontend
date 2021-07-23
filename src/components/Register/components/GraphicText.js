@@ -4,8 +4,9 @@ const GraphicText = () => {
 		<TextContainer>
 			<Heading>Initial User Registration</Heading>
 			<SubHeading>
-				Since you are visiting our website for the first time, <br />
-				kindly complete the registration process <br /> by filling up the form.
+				Welcome! Since you are visiting our website for the first time, <br />
+				kindly complete the one-time registration process <br /> by filling up
+				the form.
 			</SubHeading>
 		</TextContainer>
 	);

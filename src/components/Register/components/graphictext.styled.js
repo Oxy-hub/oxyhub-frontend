@@ -13,7 +13,6 @@ export const SubHeading = styled.h3`
 	font-size: 0.9rem;
 	font-weight: 400;
 	text-align: center;
-	width: 95%;
 	margin: 0 auto;
 	line-height: 25px;
 	color: ${pallete.fontBlack};
