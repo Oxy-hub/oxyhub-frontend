@@ -6,7 +6,6 @@ import CallbackRoute from './CallbackRoute';
 import LoginPage from '../pages/LoginPage';
 import Register from '../pages/RegisterPage';
 import CallbackPage from '../pages/CallbackPage';
-import ErrorPage from '../pages/ErrorPage';
 import App from '../pages/App';
 
 const Routes = () => {
@@ -14,10 +13,9 @@ const Routes = () => {
 		<Switch>
 			<PublicRoute exact path='/' component={LoginPage} />
 			<CallbackRoute path='/auth/github/callback' component={CallbackPage} />
-			{/* <InitialRoute path='/register' component={Register} /> */}
+			<InitialRoute path='/register' component={Register} />
 			<Route path='/register' component={Register} />
 			<PrivateRoute path='/app' component={App} />
-			<Route path='/error' component={ErrorPage} />
 			<Redirect from='/*' to='/' />
 		</Switch>
 	);

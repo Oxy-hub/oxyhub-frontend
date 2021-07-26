@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import {Redirect} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
-import {registerUser} from '../store/actions/user';
+// import {registerUser} from '../store/actions/user';
 import Register from '../components/Register';
 const RegisterPage = () => {
 	// const isAuthenticated = useSelector(state => state.isAuthenticated);

@@ -1,35 +1,31 @@
-import {STORE_INITIAL_USER, STORE_USER} from '../constants';
+import {AUTHENTICATE_USER, INITIAL_USER, REMOVE_AUTH} from '../constants';
 
 const initialState = {
-	email: null,
-	first_name: null,
-	last_name: null,
-	id_number: null,
-	id_type: null,
+	access_token: null,
 	isAuthenticated: false,
 	isInitial: false,
 };
 
 const authReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case STORE_INITIAL_USER:
+		case AUTHENTICATE_USER:
 			return {
 				...state,
-				email: action.payload.email,
-				isInitial: true,
-			};
-
-		case STORE_USER:
-			const {first_name, last_name, id_number, id_type} = action.payload;
-			return {
-				...state,
-				first_name,
-				last_name,
-				id_number,
-				id_type,
+				access_token: action.payload,
 				isAuthenticated: true,
 				isInitial: false,
 			};
+
+		case INITIAL_USER:
+			return {
+				...state,
+				access_token: action.payload,
+				isAuthenticated: false,
+				isInitial: true,
+			};
+
+		case REMOVE_AUTH:
+			return initialState;
 
 		default:
 			return state;

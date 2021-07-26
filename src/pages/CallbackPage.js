@@ -1,20 +1,15 @@
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
+import {useDispatch} from 'react-redux';
+import {updateAuth} from '../store/actions/auth';
+import {storeUser} from '../store/actions/user';
 import Loading from '../components/common/Loading';
-import axios from 'axios';
+import AuthError from '../components/common/AuthError';
+import useFetch from '../hooks/useFetch';
+
 const Callback = ({location, history}) => {
-	const sendAuthToken = async code => {
-		try {
-			const response = await axios.get('http://localhost:8000/auth/github', {
-				params: {
-					code,
-				},
-				withCredentials: true,
-			});
-			history.push('/app');
-		} catch (err) {
-			history.push('/error');
-		}
-	};
+	const dispatch = useDispatch();
+	const [authCode, setAuthCode] = useState(null);
+	const {data, error, fetch} = useFetch();
 
 	useEffect(() => {
 		// Remove the isLoggedIn state from localstorage immediately on mount
@@ -28,11 +23,34 @@ const Callback = ({location, history}) => {
 			// Remove OAuth state parameter immediately after confirmation
 			localStorage.removeItem('state');
 			//Make a call to the backend
-			sendAuthToken(code);
+			setAuthCode(code);
 		} else {
 			history.push('/');
 		}
-	}, [history]);
+	}, [history, location.search]);
+
+	useEffect(() => {
+		if (authCode) {
+			const fetchConfig = {
+				endpoint: 'auth/github',
+				method: 'GET',
+				axiosConfig: {
+					params: {code: authCode},
+				},
+			};
+			fetch(fetchConfig);
+		}
+	}, [authCode, fetch]);
+
+	useEffect(() => {
+		if (data) {
+			dispatch(updateAuth(data));
+			dispatch(storeUser(data.user));
+			data.isInitial ? history.push('/register') : history.push('/app');
+		}
+	}, [data, dispatch, history]);
+
+	if (error) return <AuthError />;
 
 	return <Loading />;
 };
