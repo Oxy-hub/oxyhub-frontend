@@ -1,8 +1,7 @@
 import {useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {updateAuth} from '../store/actions/auth';
-import {storeUser} from '../store/actions/user';
-import Loading from '../components/common/Loading';
+import Loader from '../components/common/Loader';
 import AuthError from '../components/common/AuthError';
 import useFetch from '../hooks/useFetch';
 
@@ -52,7 +51,7 @@ const Callback = ({location, history}) => {
 
 	if (error) return <AuthError />;
 
-	return <Loading />;
+	return <Loader />;
 };
 
 export default Callback;

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import pallete from '../../utils/pallete';
 
 export const RegisterContainer = styled.div`
-	height: 100vh;
+	// height: 100vh;
 	width: 100%;
 	display: flex;
 `;

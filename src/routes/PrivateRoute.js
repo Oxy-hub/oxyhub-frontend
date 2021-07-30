@@ -1,12 +1,12 @@
 import {Redirect, Route} from 'react-router-dom';
 import {useSelector} from 'react-redux';
-import PrivateLayout from '../components/common/PrivateLayout';
+import Layout from '../components/common/Layout';
 
 const PrivateRoute = ({component: Component, ...rest}) => {
 	const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
 
 	return (
-		<PrivateLayout>
+		<Layout>
 			<Route
 				{...rest}
 				render={props => {
@@ -17,7 +17,7 @@ const PrivateRoute = ({component: Component, ...rest}) => {
 					);
 				}}
 			/>
-		</PrivateLayout>
+		</Layout>
 	);
 };
 

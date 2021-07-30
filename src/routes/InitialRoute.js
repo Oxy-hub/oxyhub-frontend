@@ -1,19 +1,19 @@
 import {Redirect, Route} from 'react-router-dom';
 import {useSelector} from 'react-redux';
-import PrivateLayout from '../components/common/PrivateLayout';
+import Layout from '../components/common/Layout';
 
 const InitialRoute = ({component: Component, ...rest}) => {
 	const isInitial = useSelector(state => state.auth.isInitial);
 
 	return (
-		<PrivateLayout>
+		<Layout>
 			<Route
 				{...rest}
 				render={props => {
 					return isInitial ? <Component {...props} /> : <Redirect to='/' />;
 				}}
 			/>
-		</PrivateLayout>
+		</Layout>
 	);
 };
 

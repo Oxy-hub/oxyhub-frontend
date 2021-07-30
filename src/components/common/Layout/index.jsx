@@ -1,15 +1,12 @@
-import {useEffect} from 'react';
+import {LayoutContainer} from './layout.styled';
 
 const PrivateLayout = props => {
-	useEffect(() => {
-		console.log('Private Route Rerendering');
-	});
 	return (
-		<>
+		<LayoutContainer>
 			<nav>This is a private navbar</nav>
 			{props.children}
 			<footer>This is a private footer</footer>
-		</>
+		</LayoutContainer>
 	);
 };
 

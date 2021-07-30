@@ -1,3 +1,4 @@
+import {Helmet} from 'react-helmet';
 import {Redirect} from 'react-router-dom';
 import {useSelector} from 'react-redux';
 import Login from '../components/Login';
@@ -10,7 +11,12 @@ const LoginPage = () => {
 	} else if (isAuthenticated) {
 		return <Redirect to='/app' />;
 	} else {
-		return <Login />;
+		return (
+			<>
+				<Helmet title='Welcome! - Oxyhub' />
+				<Login />
+			</>
+		);
 	}
 };
 
