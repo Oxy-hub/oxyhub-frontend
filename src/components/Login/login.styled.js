@@ -27,16 +27,25 @@ export const Heading = styled.div`
 export const SocialAuthWrapper = styled.div`
 	width: 100%;
 	display: flex;
-	-webkit-box-shadow: 0px 60px 200px rgb(0 0 0 / 15%);
-	-moz-box-shadow: 0px 60px 200px rgb(0 0 0 / 15%);
-	box-shadow: 0px 60px 200px rgb(0 0 0 / 15%);
+	-webkit-box-shadow: 5px 45px 150px rgb(0 0 0 / 16%);
+	-moz-box-shadow: 5px 45px 150px rgb(0 0 0 / 16%);
+	box-shadow: 5px 45px 150px rgb(0 0 0 / 16%);
 `;
 
-export const Disclaimer = styled.p`
-	font-size: 0.85rem;
+export const LoveText = styled.p`
+	font-size: 1.05rem;
 	font-weight: 200;
 	color: ${pallete.fontPrimary};
 	text-align: center;
-	margin-top: 2.4em;
+	margin-top: 1.8em;
 	word-break: break-all;
+	display: flex;
+	justify-content: center;
+
+	span {
+		display: inline-flex;
+		align-items: center;
+		margin: 0 6px;
+		color: ${pallete.primary};
+	}
 `;

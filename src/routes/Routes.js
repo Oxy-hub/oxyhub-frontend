@@ -14,7 +14,6 @@ const Routes = () => {
 			<PublicRoute exact path='/' component={LoginPage} />
 			<CallbackRoute path='/auth/github/callback' component={CallbackPage} />
 			<InitialRoute path='/register' component={Register} />
-			<Route path='/register' component={Register} />
 			<PrivateRoute path='/app' component={App} />
 			<Redirect from='/*' to='/' />
 		</Switch>

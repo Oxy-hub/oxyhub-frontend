@@ -2,9 +2,10 @@ import styled from 'styled-components';
 
 export const SocialAuthContainer = styled.div`
 	width: 50%;
-	padding: 2.8em 1.5em;
+	padding: 3.3em 1.7em 2.8em 1.7em;
 
 	@media (max-width: 1100px) {
+		padding: 2.8em 1.5em;
 		width: 100%;
 	}
 `;

@@ -45,7 +45,7 @@ const Callback = ({location, history}) => {
 	useEffect(() => {
 		if (data) {
 			dispatch(updateAuth(data));
-			dispatch(storeUser(data.user));
+			// dispatch(storeUser(data.user));
 			data.isInitial ? history.push('/register') : history.push('/app');
 		}
 	}, [data, dispatch, history]);

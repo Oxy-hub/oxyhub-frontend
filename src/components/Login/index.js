@@ -3,10 +3,11 @@ import {
 	Heading,
 	LoginWrapper,
 	BackgroundContainer,
-	Disclaimer,
+	LoveText,
 } from './login.styled';
 import SocialAuth from './components/SocialAuth';
 import Graphic from './components/Graphic';
+import {FaHeart} from 'react-icons/fa';
 
 const Login = () => {
 	return (
@@ -19,10 +20,13 @@ const Login = () => {
 					<SocialAuth />
 					<Graphic />
 				</SocialAuthWrapper>
-				<Disclaimer>
-					Disclaimer : This application is not meant to be used as a real life
-					application.
-				</Disclaimer>
+				<LoveText>
+					Made with
+					<span>
+						<FaHeart />
+					</span>
+					and React
+				</LoveText>
 			</LoginWrapper>
 		</BackgroundContainer>
 	);
