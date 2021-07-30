@@ -22,6 +22,7 @@ export const LoginWrapper = styled.div`
 
 export const Heading = styled.div`
 	width: 100%;
+	margin-bottom: 2em;
 `;
 
 export const SocialAuthWrapper = styled.div`

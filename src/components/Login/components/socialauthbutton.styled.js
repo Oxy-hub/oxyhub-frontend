@@ -1,12 +1,11 @@
 import styled from 'styled-components';
-// import variables from '../../../utils/variables';
 
 export const Button = styled.button`
 	outline: none;
 	width: 100%;
 	border-radius: 5px;
 	border: ${props => (props.background === 'transparent' ? '1px' : '0px')} solid
-		#d5d5d5;
+		#bcbcbc;
 	padding: 1em;
 	margin-bottom: ${props => (!props.last ? '1.5em' : 0)};
 	font-size: 0.95rem;
