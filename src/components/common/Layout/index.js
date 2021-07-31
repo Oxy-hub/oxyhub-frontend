@@ -1,3 +1,4 @@
+import Footer from './Footer';
 import {LayoutContainer} from './layout.styled';
 
 const PrivateLayout = props => {
@@ -5,7 +6,7 @@ const PrivateLayout = props => {
 		<LayoutContainer>
 			<nav>This is a private navbar</nav>
 			{props.children}
-			<footer>This is a private footer</footer>
+			<Footer>This is a private footer</Footer>
 		</LayoutContainer>
 	);
 };

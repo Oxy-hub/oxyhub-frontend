@@ -3,7 +3,7 @@ import {
 	Heading,
 	LoginWrapper,
 	BackgroundContainer,
-	LoveText,
+	BuiltWithText,
 } from './login.styled';
 import SocialAuth from './components/SocialAuth';
 import Graphic from './components/Graphic';
@@ -20,13 +20,13 @@ const Login = () => {
 					<SocialAuth />
 					<Graphic />
 				</SocialAuthWrapper>
-				<LoveText>
+				<BuiltWithText>
 					Made with
 					<span>
 						<FaHeart />
 					</span>
 					and React
-				</LoveText>
+				</BuiltWithText>
 			</LoginWrapper>
 		</BackgroundContainer>
 	);

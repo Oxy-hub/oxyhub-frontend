@@ -33,9 +33,8 @@ export const SocialAuthWrapper = styled.div`
 	box-shadow: 5px 45px 150px rgb(0 0 0 / 16%);
 `;
 
-export const LoveText = styled.p`
+export const BuiltWithText = styled.p`
 	font-size: 1.05rem;
-	font-weight: 200;
 	color: ${pallete.fontPrimary};
 	text-align: center;
 	margin-top: 1.8em;
