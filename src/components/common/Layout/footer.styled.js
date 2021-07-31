@@ -3,7 +3,6 @@ import pallete from '../../../utils/pallete';
 
 export const FooterContainer = styled.footer`
 	width: 100%;
-
 	background: ${pallete.footerBg};
 `;
 
@@ -11,6 +10,7 @@ export const FooterWrapper = styled.div`
 	margin: 0 auto;
 	max-width: 1100px;
 	padding: 2em 1em;
+	width: 85%;
 `;
 
 export const BuiltWithText = styled.p`
