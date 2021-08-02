@@ -2,6 +2,7 @@ import {useState} from 'react';
 import {Redirect} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 // import {registerUser} from '../store/actions/user';
+import {Helmet} from 'react-helmet';
 import Register from '../components/Register';
 const RegisterPage = () => {
 	// const isAuthenticated = useSelector(state => state.isAuthenticated);
@@ -62,7 +63,12 @@ const RegisterPage = () => {
 	//     </div>
 	//   );
 	// }
-	return <Register />;
+	return (
+		<>
+			<Helmet title='One Last Step !' />
+			<Register />
+		</>
+	);
 };
 
 export default RegisterPage;

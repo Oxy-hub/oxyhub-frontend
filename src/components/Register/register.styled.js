@@ -1,27 +1,20 @@
 import styled from 'styled-components';
 import pallete from '../../utils/pallete';
 
-export const RegisterContainer = styled.div`
-	// height: 100vh;
+export const RegisterFormSection = styled.section`
 	width: 100%;
-	display: flex;
+	padding: 2.2em 0;
 `;
-export const GraphicSection = styled.section`
-	width: 550px;
-	display: flex;
-	align-items: center;
-	background-color: ${pallete.bgGraphic};
-
-	@media (max-width: 1200px) {
-		width: 490px;
-	}
-	@media (max-width: 1050px) {
-		display: none;
-	}
-`;
-export const GraphicContainer = styled.div`
-	width: 90%;
+export const FormContainer = styled.div`
+	width: 100%;
+	max-width: 640px;
 	margin: 0 auto;
+	padding: 3em 2.5em;
+	background: white;
+	border-radius: 5px;
+	box-shadow: 0 0 0 1px ${pallete.border};
+
+	@media (max-width: 470px) {
+		padding: 3em 1.5em;
+	}
 `;
-export const RegisterFormSection = styled.section``;
-export const RegisterFormContainer = styled.div``;

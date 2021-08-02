@@ -31,7 +31,8 @@ h6,
 span,
 br,
 button,
-input {
+input,
+label {
 	&::selection {
 		color: white;
 		background: #ff725e;
@@ -39,6 +40,6 @@ input {
 }
 
 #root {
-	height: 100vh;
+	min-height: 100vh;
 	background-color: #eef0f1;
 }

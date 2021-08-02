@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import pallete from '../../utils/pallete';
+import pallete from '../../../utils/pallete';
 export const Button = styled.button`
 	outline: none;
 	border: none;
 	width: 100%;
-	padding: 1em;
+	padding: 0.9em;
 	font-size: 0.95rem;
 	font-weight: 600;
 	letter-spacing: 1px;
