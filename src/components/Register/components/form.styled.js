@@ -5,6 +5,12 @@ import pallete from '../../../utils/pallete';
 export const InputFieldContainer = styled.div`
 	width: 100%;
 	margin-bottom: 1.2em;
+
+	#error {
+		color: ${pallete.primary};
+		font-size: 14px;
+		margin-top: 5px;
+	}
 `;
 
 export const Label = styled.label`
@@ -12,6 +18,10 @@ export const Label = styled.label`
 	font-size: 1rem;
 	font-weight: 500;
 	color: ${pallete.fontBlack};
+
+	span {
+		color: ${pallete.primary};
+	}
 `;
 
 export const ButtonContainer = styled.div`
@@ -25,6 +35,7 @@ export const Field = styled(FormikField)`
 	padding: 0.95em 1em;
 	font-family: inherit;
 	font-size: 16px;
+	font-weight: 500;
 	border: 1px solid #d3d3d3;
 	border-radius: 5px;
 	color: ${pallete.fontPrimary};

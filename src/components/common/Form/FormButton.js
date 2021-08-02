@@ -1,10 +1,10 @@
 import {Button} from './formbutton.styled';
 
-const FormButton = ({children: text, ...props}) => {
+const FormButton = ({children: text, submitting, ...props}) => {
 	return (
 		<>
-			<Button {...props} type='submit'>
-				{text}
+			<Button {...props} type='submit' submitting={submitting}>
+				{!submitting ? text : 'Saving...'}
 			</Button>
 		</>
 	);
