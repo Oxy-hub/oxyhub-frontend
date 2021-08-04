@@ -7,15 +7,14 @@ import {
 } from './login.styled';
 import SocialAuth from './components/SocialAuth';
 import Graphic from './components/Graphic';
+import Logo from './components/Logo';
 import {FaHeart} from 'react-icons/fa';
 
 const Login = () => {
 	return (
 		<BackgroundContainer>
 			<LoginWrapper>
-				<Heading>
-					<h1 style={{textAlign: 'center'}}>Oxyhub</h1>
-				</Heading>
+				<Logo />
 				<SocialAuthWrapper>
 					<SocialAuth />
 					<Graphic />
