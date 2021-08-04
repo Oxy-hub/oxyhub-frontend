@@ -1,12 +1,10 @@
 import {HeaderContainer, Heading, SubHeading} from './formheader.styled';
+
 const FormHeader = () => {
 	return (
 		<HeaderContainer>
-			<Heading>Complete Your Registration!</Heading>
-			<SubHeading>
-				Don't worry! This is an one time process only. You won't be asked to do
-				it again.
-			</SubHeading>
+			<Heading>One Last Step!</Heading>
+			<SubHeading>Confirm your name and email id to continue . . .</SubHeading>
 		</HeaderContainer>
 	);
 };
