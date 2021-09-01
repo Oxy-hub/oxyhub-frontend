@@ -1,9 +1,9 @@
 import { Helmet } from 'react-helmet';
 import Login from '../components/Login';
 
-const LoginPage = () => (
+const LoginPage = hello => (
   <>
-    <Helmet title="Welcome! - Oxyhub" />
+    <Helmet title="Welcome! - Oxyhub" hello={hello} />
     <Login />
   </>
 );
