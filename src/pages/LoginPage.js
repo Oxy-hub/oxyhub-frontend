@@ -5,6 +5,7 @@ const LoginPage = () => (
   <>
     <Helmet title="Welcome! - Oxyhub" />
     <Login />
+    Hello;
   </>
 );
 
