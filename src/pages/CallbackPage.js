@@ -55,7 +55,6 @@ const Callback = ({ location, history }) => {
   if (error) return <AuthError />;
 
   return <Loader />;
-  Hello;
 };
 
 export default Callback;
