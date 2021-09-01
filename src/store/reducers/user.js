@@ -1,30 +1,31 @@
-import {STORE_USER, REMOVE_USER} from '../constants';
+import { STORE_USER, REMOVE_USER } from '../constants';
 
 const initialState = {
-	first_name: null,
-	middle_name: null,
-	last_name: null,
-	email: null,
+  firstName: null,
+  middleName: null,
+  lastName: null,
+  email: null
 };
 
 const userReducer = (state = initialState, action) => {
-	switch (action.type) {
-		case STORE_USER:
-			const {first_name, middle_name, last_name, email} = action.payload;
-			return {
-				...state,
-				first_name,
-				middle_name,
-				last_name,
-				email,
-			};
+  switch (action.type) {
+    case STORE_USER: {
+      const { firstName, middleName, lastName, email } = action.payload;
+      return {
+        ...state,
+        firstName,
+        middleName,
+        lastName,
+        email
+      };
+    }
 
-		case REMOVE_USER:
-			return initialState;
+    case REMOVE_USER:
+      return initialState;
 
-		default:
-			return state;
-	}
+    default:
+      return state;
+  }
 };
 
 export default userReducer;

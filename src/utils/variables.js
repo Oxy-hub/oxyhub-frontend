@@ -1,5 +1,5 @@
 const variables = {
-	poppins: `'Poppins', sans-serif`,
+  poppins: `'Poppins', sans-serif`
 };
 
 export default variables;

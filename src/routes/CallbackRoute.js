@@ -1,3 +1,4 @@
+import PropType from 'prop-types';
 import { Redirect, Route } from 'react-router-dom';
 
 const CallbackRoute = ({ component: Component, ...rest }) => {
@@ -6,11 +7,15 @@ const CallbackRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={props => {
-        return isLoggingIn ? <Component {...props} /> : <Redirect to='/' />;
-      }}
+      render={props =>
+        isLoggingIn ? <Component {...props} /> : <Redirect to="/" />
+      }
     />
   );
 };
 
 export default CallbackRoute;
+
+CallbackRoute.propTypes = {
+  component: PropType.element.isRequired
+};

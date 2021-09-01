@@ -1,12 +1,11 @@
-import {Helmet} from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import Register from '../components/Register';
-const RegisterPage = () => {
-	return (
-		<>
-			<Helmet title='One Last Step !' />
-			<Register />
-		</>
-	);
-};
+
+const RegisterPage = () => (
+  <>
+    <Helmet title="One Last Step !" />
+    <Register />
+  </>
+);
 
 export default RegisterPage;

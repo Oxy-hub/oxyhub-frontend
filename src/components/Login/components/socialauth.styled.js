@@ -1,21 +1,21 @@
 import styled from 'styled-components';
 
 export const SocialAuthContainer = styled.div`
-	width: 50%;
-	padding: 3.3em 1.7em 2.8em 1.7em;
+  width: 50%;
+  padding: 3.3em 1.7em 2.8em 1.7em;
 
-	@media (max-width: 1100px) {
-		padding: 2.8em 1.5em;
-		width: 100%;
-	}
+  @media (max-width: 1100px) {
+    padding: 2.8em 1.5em;
+    width: 100%;
+  }
 `;
 
 export const ButtonContainer = styled.div`
-	padding: 0 3em;
+  padding: 0 3em;
 
-	@media (max-width: 1100px) {
-		padding: 0;
-	}
+  @media (max-width: 1100px) {
+    padding: 0;
+  }
 `;
 
 // export const Form = styled(FormikForm)`

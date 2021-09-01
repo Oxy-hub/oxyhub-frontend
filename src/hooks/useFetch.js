@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
 export const Axios = axios.create({
-  baseURL: process.env.REACT_APP_API_BASE_URL,
+  baseURL: process.env.REACT_APP_API_BASE_URL
 });
 
 /**
@@ -23,7 +23,7 @@ const useFetch = args => {
         url: endpoint,
         method,
         withCredentials: true,
-        ...axiosConfig,
+        ...axiosConfig
       });
       setData(response.data);
       setLoading(false);
@@ -36,6 +36,7 @@ const useFetch = args => {
   }, []);
 
   const reFetch = useCallback(
+    // eslint-disable-next-line
     args => {
       fetch({ ...args });
     },
