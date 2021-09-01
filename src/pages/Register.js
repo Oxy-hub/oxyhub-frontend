@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Redirect } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 // import { registerUser } from '../store/actions/user';
 const Register = () => {
   const isAuthenticated = useSelector(state => state.isAuthenticated);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [formState, setFormState] = useState({
     first_name: '',
     last_name: '',
@@ -18,7 +18,7 @@ const Register = () => {
 
   const submitForm = e => {
     e.preventDefault();
-    dispatch(registerUser(formState));
+    // dispatch(registerUser(formState));
   };
 
   if (isAuthenticated) {
@@ -56,7 +56,9 @@ const Register = () => {
           value={formState.id_number}
           onChange={e => updateFormState(e.target.value, e.target.name)}
         />
-        <button id="submit-userinfo-button">Submit</button>
+        <button id="submit-userinfo-button" type="submit">
+          Submit
+        </button>
       </form>
     </div>
   );
