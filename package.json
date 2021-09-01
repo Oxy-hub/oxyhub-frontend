@@ -32,8 +32,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "npx eslint .",
-    "prettier": "npx prettier --check .",
+    "lint": "npx eslint",
+    "prettier": "npx prettier --check",
     "pre-commit": "lint-staged",
     "prepare": "husky install"
   },
