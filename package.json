@@ -65,7 +65,7 @@
     "prettier": "^2.3.2"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx}": [
+    "*.{js,jsx}": [
       "npx eslint",
       "npx prettier --check"
     ]
