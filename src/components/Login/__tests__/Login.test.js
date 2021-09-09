@@ -1,6 +1,5 @@
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import snapshot from 'react-test-renderer';
 import Login from '../index';
 
 describe('<Login/>', () => {
@@ -36,9 +35,4 @@ describe('<Login/>', () => {
 
   // test('Should redirect to google consent screen upon clicking github login button', () => {
   // });
-
-  test('Snapshot test for the login page', () => {
-    const componentSnapshot = snapshot.create(<Login />).toJSON();
-    expect(componentSnapshot).toMatchSnapshot();
-  });
 });

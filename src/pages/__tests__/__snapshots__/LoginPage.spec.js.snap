@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Login/> Snapshot test for the login page 1`] = `
+exports[`Snapshot test for the login page 1`] = `
 <div
   className="sc-bdfBQB iPiXvl"
 >
