@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import Button from './formbutton.styled';
 
-const FormButton = ({ children: text, submitting, ...props }) => (
+const FormButton = ({ children: text, submitting }) => (
   <>
-    <Button {...props} type="submit" submitting={submitting}>
+    <Button type="submit" submitting={submitting}>
       {!submitting ? text : 'Saving...'}
     </Button>
   </>
