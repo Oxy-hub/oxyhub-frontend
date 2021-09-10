@@ -18,9 +18,7 @@ const LoginForm = () => (
             color={color}
             helper={helper}
             isLast={authProviders.length - 1 === index}
-          >
-            {text}
-          </SocialAuthButton>
+          />
         );
       })}
     </ButtonContainer>
