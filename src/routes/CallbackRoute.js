@@ -6,8 +6,10 @@ const CallbackRoute = ({ component: Component, ...rest }) => {
 
   return (
     <Route
+      // eslint-disable-next-line
       {...rest}
       render={props =>
+        // eslint-disable-next-line
         isLoggingIn ? <Component {...props} /> : <Redirect to="/" />
       }
     />
@@ -17,5 +19,5 @@ const CallbackRoute = ({ component: Component, ...rest }) => {
 export default CallbackRoute;
 
 CallbackRoute.propTypes = {
-  component: PropType.element.isRequired
+  component: PropType.func.isRequired
 };

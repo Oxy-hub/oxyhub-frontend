@@ -9,8 +9,10 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   return (
     <Layout>
       <Route
+        // eslint-disable-next-line
         {...rest}
         render={props =>
+          // eslint-disable-next-line
           isAuthenticated ? <Component {...props} /> : <Redirect to="/" />
         }
       />
@@ -21,5 +23,5 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 export default PrivateRoute;
 
 PrivateRoute.propTypes = {
-  component: PropType.element.isRequired
+  component: PropType.func.isRequired
 };

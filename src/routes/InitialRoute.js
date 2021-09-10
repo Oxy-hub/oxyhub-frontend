@@ -9,8 +9,10 @@ const InitialRoute = ({ component: Component, ...rest }) => {
   return (
     <Layout>
       <Route
+        // eslint-disable-next-line
         {...rest}
         render={props =>
+          // eslint-disable-next-line
           isInitial ? <Component {...props} /> : <Redirect to="/" />
         }
       />
@@ -21,5 +23,5 @@ const InitialRoute = ({ component: Component, ...rest }) => {
 export default InitialRoute;
 
 InitialRoute.propTypes = {
-  component: PropType.element.isRequired
+  component: PropType.func.isRequired
 };
