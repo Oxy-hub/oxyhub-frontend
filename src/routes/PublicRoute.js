@@ -8,10 +8,12 @@ const PublicRoute = ({ component: Component, ...rest }) => {
 
   return (
     <Route
+      // eslint-disable-next-line
       {...rest}
       render={props =>
         // eslint-disable-next-line
         !isAuthenticated && !isInitial ? (
+          // eslint-disable-next-line
           <Component {...props} />
         ) : !isInitial ? (
           <Redirect to="/app" />
@@ -26,5 +28,5 @@ const PublicRoute = ({ component: Component, ...rest }) => {
 export default PublicRoute;
 
 PublicRoute.propTypes = {
-  component: PropType.element.isRequired
+  component: PropType.func.isRequired
 };
