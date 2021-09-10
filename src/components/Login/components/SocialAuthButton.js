@@ -1,18 +1,27 @@
 import PropTypes from 'prop-types';
 import { Button, IconContainer } from './socialauthbutton.styled';
 
-const SocialAuthButton = ({ children, last, helper, icon, ...props }) => (
-  <Button last={last} onClick={helper} {...props}>
+const SocialAuthButton = ({
+  text,
+  icon,
+  background,
+  color,
+  helper,
+  isLast
+}) => (
+  <Button last={isLast} onClick={helper} background={background} color={color}>
     <IconContainer>{icon}</IconContainer>
-    {children}
+    {text}
   </Button>
 );
 
 export default SocialAuthButton;
 
 SocialAuthButton.propTypes = {
-  children: PropTypes.node.isRequired,
-  last: PropTypes.bool.isRequired,
+  text: PropTypes.string.isRequired,
+  icon: PropTypes.element.isRequired,
+  background: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
   helper: PropTypes.func.isRequired,
-  icon: PropTypes.element.isRequired
+  isLast: PropTypes.bool.isRequired
 };

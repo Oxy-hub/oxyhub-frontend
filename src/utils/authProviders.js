@@ -6,7 +6,7 @@ import * as authHelpers from './authHelpers';
 const size = '20px';
 const authProviders = [
   {
-    provider: 'Google',
+    name: 'Google',
     text: 'Login With Google',
     icon: <FcGoogle size={size} />,
     background: 'transparent',
@@ -14,7 +14,7 @@ const authProviders = [
     helper: authHelpers.googleAuthHelper
   },
   {
-    provider: 'Github',
+    name: 'Github',
     text: 'Login With Github',
     icon: <FaGithub size={size} />,
     background: '#000000',
