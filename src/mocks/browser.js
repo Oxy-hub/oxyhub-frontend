@@ -1,17 +1,9 @@
 // eslint-disable-next-line
-import { setupWorker, rest } from 'msw';
-// import { handlers } from './handlers';
+import { setupWorker } from 'msw';
+import auth from './routes/auth';
+import refresh from './routes/refresh';
+import user from './routes/user';
 
-// This configures a Service Worker with the given request handlers.
-const worker = setupWorker(
-  rest.get('/user/:userId', (req, res, ctx) =>
-    res(
-      ctx.json({
-        firstName: 'John',
-        lastName: 'Maverick'
-      })
-    )
-  )
-);
+const worker = setupWorker(...auth, ...refresh, ...user);
 
 export default worker;
