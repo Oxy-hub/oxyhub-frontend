@@ -1,6 +1,6 @@
-import { RegisterFormSection, FormContainer } from './register.styled';
-import FormHeader from './components/FormHeader';
-import Form from './components/Form';
+import { RegisterFormSection, FormContainer } from './index.styled';
+import FormHeader from './FormHeader';
+import Form from './Form';
 
 const Register = () => (
   <RegisterFormSection>

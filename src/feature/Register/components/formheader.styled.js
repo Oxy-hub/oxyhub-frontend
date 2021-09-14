@@ -11,6 +11,7 @@ export const Heading = styled.h1`
   font-weight: 600;
   color: ${pallete.fontBlack};
 `;
+
 export const SubHeading = styled.h2`
   font-size: 1rem;
   font-weight: 400;

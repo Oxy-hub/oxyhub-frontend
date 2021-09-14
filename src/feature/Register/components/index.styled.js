@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import pallete from '../../utils/pallete';
+import pallete from '../../../utils/pallete';
 
 export const RegisterFormSection = styled.section`
   width: 100%;

@@ -6,4 +6,5 @@ const FormHeader = () => (
     <SubHeading>Confirm your name and email id to continue . . .</SubHeading>
   </HeaderContainer>
 );
+
 export default FormHeader;
