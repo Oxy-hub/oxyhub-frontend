@@ -1,7 +1,6 @@
 import setBaseUrl from './setBaseUrl';
 import setGithubConfig from './setGithubConfig';
 
-console.log(setBaseUrl());
 export default {
   baseURL: setBaseUrl(),
   github: setGithubConfig(),
