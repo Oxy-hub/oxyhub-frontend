@@ -4,10 +4,10 @@ import {
   LoginWrapper,
   BackgroundContainer,
   BuiltWithText
-} from './login.styled';
-import SocialAuth from './components/SocialAuth';
-import Graphic from './components/Graphic';
-import Logo from './components/Logo';
+} from './index.styled';
+import SocialAuth from './SocialAuth';
+import Graphic from './Graphic';
+import Logo from './Logo';
 
 const Login = () => (
   <BackgroundContainer>

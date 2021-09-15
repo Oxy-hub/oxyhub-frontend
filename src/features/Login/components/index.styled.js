@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import pallete from '../../utils/pallete';
+import pallete from '../../../utils/pallete';
 
 export const BackgroundContainer = styled.div`
   height: 100vh;
