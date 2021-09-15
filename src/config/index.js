@@ -1,17 +1,9 @@
-const setBaseUrl = () => {
-  switch (process.env.NODE_ENV) {
-    case 'production':
-      return process.env.REACT_APP_API_BASE_URL_PROD;
+import setBaseUrl from './setBaseUrl';
+import setGithubConfig from './setGithubConfig';
 
-    case 'test':
-      return process.env.REACT_APP_API_BASE_URL_TEST;
-
-    default:
-      return process.env.REACT_APP_API_BASE_URL_DEV;
-  }
-};
-
+console.log(setBaseUrl());
 export default {
   baseURL: setBaseUrl(),
+  github: setGithubConfig(),
   enableMock: process.env.REACT_APP_MOCK_API
 };
