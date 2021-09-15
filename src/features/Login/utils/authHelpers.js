@@ -1,4 +1,5 @@
 import cryptoRandomString from 'crypto-random-string';
+import config from '../../../config';
 
 export const googleAuthHelper = () => {
   // Logic for what happens when button is clicked
@@ -7,9 +8,9 @@ export const googleAuthHelper = () => {
 
 export const githubAuthHelper = () => {
   // Logic for what happens when Login with Github button is clicked
-  const CLIENT_ID = process.env.REACT_APP_GITHUB_CLIENT_ID;
-  const SCOPE = process.env.REACT_APP_GITHUB_SCOPE;
-  const REDIRECT_URL = process.env.REACT_APP_GITHUB_REDIRECT_URL;
+  const CLIENT_ID = config.github.clientId;
+  const SCOPE = config.github.scope;
+  const REDIRECT_URL = config.github.redirectUrl;
   const state = cryptoRandomString({ length: 10, type: 'url-safe' });
   localStorage.setItem('isLoggingIn', true);
   localStorage.setItem('state', state);
