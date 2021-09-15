@@ -4,11 +4,11 @@ import PublicRoute from './PublicRoute';
 import InitialRoute from './InitialRoute';
 import CallbackRoute from './CallbackRoute';
 
-import Login from '../pages/LoginPage';
-import Register from '../feature/Register';
+import Login from '../features/Login';
+import Register from '../features/Register';
 import CallbackPage from '../pages/CallbackPage';
 // import App from '../pages/App';
-import Search from '../feature/Search';
+import Search from '../features/Search';
 
 const Routes = () => (
   <Switch>
