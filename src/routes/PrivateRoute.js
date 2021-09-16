@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import Layout from '../components/common/Layout';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+  const isAuthenticated = useSelector(state => state.auth.isAuth);
 
   return (
     <Layout>

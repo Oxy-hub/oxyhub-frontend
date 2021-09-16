@@ -4,8 +4,7 @@ import { useSelector } from 'react-redux';
 import Layout from '../components/common/Layout';
 
 const PublicRoute = ({ component: Component, ...rest }) => {
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
-  const isInitial = useSelector(state => state.auth.isInitial);
+  const isAuthenticated = useSelector(state => state.auth.isAuth);
 
   return (
     <Layout>
@@ -14,11 +13,9 @@ const PublicRoute = ({ component: Component, ...rest }) => {
         {...rest}
         render={props =>
           // eslint-disable-next-line
-          !isAuthenticated && !isInitial ? (
+          !isAuthenticated ? (
             // eslint-disable-next-line
             <Component {...props} />
-          ) : !isInitial ? (
-            <Redirect to="/app" />
           ) : (
             <Redirect to="/register" />
           )
