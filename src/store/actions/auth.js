@@ -1,10 +1,10 @@
-import { AUTHENTICATE_USER, INITIAL_USER, REMOVE_AUTH } from '../constants';
+import { STORE_TOKEN, REMOVE_TOKEN } from '../constants';
 
-export const updateAuth = data => ({
-  type: data.isInitial ? INITIAL_USER : AUTHENTICATE_USER,
-  payload: data.access_token
+export const storeAuthToken = data => ({
+  type: STORE_TOKEN,
+  payload: data
 });
 
-export const removeAuth = () => ({
-  type: REMOVE_AUTH
+export const removeAuthToken = () => ({
+  type: REMOVE_TOKEN
 });
