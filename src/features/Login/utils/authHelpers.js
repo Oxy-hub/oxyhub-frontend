@@ -14,7 +14,6 @@ export const githubAuthHelper = () => {
   const SCOPE = config.github.scope;
   const REDIRECT_URL = config.github.redirectUrl;
 
-  localStorage.setItem('isLoggingIn', true);
   localStorage.setItem('state', state);
 
   window.location.assign(
