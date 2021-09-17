@@ -1,22 +1,21 @@
-// import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import Routes from './Routes';
-// import { updateAuth } from '../store/actions/auth';
-import useFetch from '../hooks/useFetch';
+import { useLocation } from 'react-router-dom';
+import AppRoutes from './Routes';
+import useRefresh from '../hooks/useRefresh';
 import Loading from '../components/common/Loader';
 
-const AppRoutes = () => {
-  // const dispatch = useDispatch();
-  const fetchConfig = {
-    endpoint: 'refresh',
-    method: 'GET'
-  };
-  const { data, loadingOnMount } = useFetch(fetchConfig);
-  useEffect(() => {
-    // if (data) dispatch(updateAuth(data));
-  }, [data]);
+const Routes = () => {
+  const { pathname } = useLocation();
+  const ignoreRefreshlocation = pathname.split('/')[1];
 
-  return loadingOnMount ? <Loading /> : <Routes />;
+  const { isSuccess, isError, refreshCancelled } = useRefresh(
+    ignoreRefreshlocation
+  );
+
+  if (isSuccess || isError || refreshCancelled) {
+    return <AppRoutes />;
+  }
+
+  return <Loading />;
 };
 
-export default AppRoutes;
+export default Routes;
