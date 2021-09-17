@@ -12,13 +12,13 @@ const useRefresh = (location = null, refreshIgnoreList = ['auth']) => {
 
   const { isSuccess, isError, refetch } = useQuery('refresh', refreshUser, {
     enabled: false,
-    retry: 0
+    retry: 0,
+    staleTime: Infinity
   });
 
   const performQuery = async () => {
     try {
       const { data } = await refetch({ throwOnError: true });
-      console.log('data :', data);
       // If API sends back access token, push it to redux
       if (data.accessToken) {
         dispatch(storeAuthToken(data.accessToken));
