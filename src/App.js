@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import { QueryClientProvider } from 'react-query';
-// import { ReactQueryDevtools } from 'react-query/devtools';
+import { ReactQueryDevtools } from 'react-query/devtools';
 import { BrowserRouter } from 'react-router-dom';
 import WebFont from 'webfontloader';
 import { Helmet } from 'react-helmet';
@@ -26,7 +26,7 @@ const App = () => {
         <QueryClientProvider client={queryClient}>
           <Helmet title="Oxyhub - Book Oxygen Cylinders Online" />
           <AppRoutes />
-          {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+          <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
       </Provider>
     </BrowserRouter>
