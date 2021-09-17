@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import AppRoutes from './Routes';
+import AppRoutes from './components';
 import useRefresh from '../hooks/useRefresh';
 import Loading from '../components/common/Loader';
 
