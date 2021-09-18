@@ -3,6 +3,7 @@ import Proptypes from 'prop-types';
 import { InputText } from './input.styled';
 import Label from './components/Label';
 import FormContainer from './components/Container';
+import Error from './components/Error';
 
 //   eslint-disable-next-line
 const Input = ({ id, name, label, ...rest }) => {
@@ -13,7 +14,7 @@ const Input = ({ id, name, label, ...rest }) => {
       {label && <Label text={label} htmlFor={id || name} />}
       {/* eslint-disable-next-line */}
       <InputText {...field} {...rest} />
-      <ErrorMessage name={name} />
+      <ErrorMessage name={name} component={Error} />
     </FormContainer>
   );
 };
