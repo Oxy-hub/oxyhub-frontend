@@ -1,106 +1,72 @@
-import { useState } from 'react';
-import { Formik, Form, ErrorMessage } from 'formik';
+import { Formik, Form } from 'formik';
 import * as yup from 'yup';
-import useGetUser from '../../misc/api/getUser';
-import {
-  InputFieldContainer,
-  Label,
-  ButtonContainer,
-  Field
-} from './form.styled';
-import FormButton from '../../../components/common/Form/FormButton';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import FormControl from '../../../components/FormControl';
+import { usePostUser } from '../api/postUser';
 
 const RegisterForm = () => {
-  let user;
-  const { isLoading, isError, data, isFetching } = useGetUser();
-
-  useState(() => {
-    console.log('Component Remounting');
-  });
-
-  const [submitting, isSubmitting] = useState(false);
-
-  // const initialValues =
+  const { firstName, middleName, lastName, email } = useSelector(
+    state => state.initialUser
+  );
+  const history = useHistory();
+  const { mutateAsync } = usePostUser();
 
   const validationSchema = yup.object({
-    first_name: yup.string().trim().required('First name cannot be empty!'),
-    middle_name: yup.string().trim().nullable(),
-    last_name: yup.string().trim().required('Last name cannot be empty!')
+    firstName: yup.string().trim().required('First name cannot be empty!'),
+    middleName: yup.string().trim().nullable(),
+    lastName: yup.string().trim().required('Last name cannot be empty!')
   });
-
-  if (data) {
-    console.log(data);
-    user = data.data;
-  }
-
-  if (isLoading || isFetching) {
-    return <h1>Loading or Fetching...</h1>;
-  }
-  if (isError) {
-    return <h1>Error</h1>;
-  }
 
   return (
     <Formik
       initialValues={{
-        first_name: user.firstName,
-        middle_name: user.middlwName,
-        last_name: user.lastName,
-        email: user.email
+        firstName,
+        middleName,
+        lastName,
+        email
       }}
       validationSchema={validationSchema}
-      onSubmit={values => {
-        console.log('Register Submit!');
-        console.log(values);
-        isSubmitting(state => !state);
+      onSubmit={async values => {
+        try {
+          await mutateAsync(values);
+          history.push('/search');
+        } catch (e) {
+          // Do Nothing
+        }
       }}
     >
-      <Form autoComplete="off">
-        <InputFieldContainer>
-          <Label htmlFor="first_name">
-            First Name <span>*</span>
-          </Label>
-          <Field id="first_name" name="first_name" />
-          <ErrorMessage
-            name="first_name"
-            id="error"
-            component="p"
-            data-testid="first-name-error"
+      {({ isSubmitting }) => (
+        <Form autoComplete="off">
+          <FormControl
+            id="first_name"
+            name="firstName"
+            label="First Name"
+            required
           />
-        </InputFieldContainer>
-        <InputFieldContainer>
-          <Label htmlFor="middle_name">Middle Name</Label>
-          <Field id="middle_name" name="middle_name" />
-          <ErrorMessage
-            name="middle_name"
-            id="error"
-            component="p"
-            data-testid="middle-name-error"
-          />
-        </InputFieldContainer>
-        <InputFieldContainer>
-          <Label htmlFor="last_name">
-            Last Name <span>*</span>
-          </Label>
-          <Field id="last_name" name="last_name" />
-          <ErrorMessage
-            name="last_name"
-            id="error"
-            component="p"
-            data-testid="last-name-error"
-          />
-        </InputFieldContainer>
-        <InputFieldContainer>
-          <Label htmlFor="email">
-            Email <span>*</span>
-          </Label>
-          <Field id="email" name="email" disabled />
-        </InputFieldContainer>
 
-        <ButtonContainer>
-          <FormButton submitting={submitting}>Save & Continue</FormButton>
-        </ButtonContainer>
-      </Form>
+          <FormControl id="middle_name" name="middleName" label="Middle Name" />
+
+          <FormControl
+            id="last_name"
+            name="lastName"
+            label="Last Name"
+            required
+          />
+
+          <FormControl
+            id="email"
+            name="email"
+            label="Email"
+            disabled
+            required
+          />
+
+          <FormControl control="submit" disabled={isSubmitting}>
+            Save & Continue
+          </FormControl>
+        </Form>
+      )}
     </Formik>
   );
 };
