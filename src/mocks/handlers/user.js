@@ -10,6 +10,21 @@ const getUser = (_, res, ctx) =>
     })
   );
 
+// const postUser = (req, res, ctx) => res(ctx.delay(2000), ctx.status(400));
+
+const postUser = (req, res, ctx) => {
+  console.log(req.body);
+  return res(
+    ctx.delay(),
+    ctx.status(200),
+    ctx.cookie('RTK', 'superSecretRefreshToken'),
+    ctx.json({
+      accessToken: 'superSecretAccessToken'
+    })
+  );
+};
+
 export default {
-  getUser
+  getUser,
+  postUser
 };
