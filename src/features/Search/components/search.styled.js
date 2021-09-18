@@ -26,7 +26,7 @@ export const Header = styled.h1`
 `;
 
 export const DropdownContainer = styled.div`
-  // border: 1px solid red;
+  // border: 2px solid red;
   display: flex;
   justify-content: space-between;
   position: absolute;
@@ -35,5 +35,6 @@ export const DropdownContainer = styled.div`
   right: 0;
   top: 82%;
   box-shadow: 0px 8px 20px rgb(0 0 0 / 6%);
-  border-radius: 10px;
+  background: white;
+  border-radius: 20px;
 `;
