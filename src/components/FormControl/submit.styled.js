@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import pallete from '../../../utils/pallete';
+import pallete from '../../utils/pallete';
 
 export default styled.button`
   outline: none;
@@ -18,5 +18,5 @@ export default styled.button`
   -webkit-box-shadow: 0px 12px 24px -12px rgba(255, 114, 94, 0.5);
   transition: opacity 150ms ease-in-out;
 
-  ${props => props.submitting && `opacity: 85%;`}
+  ${props => props.disabled && `opacity: 85%;`}
 `;

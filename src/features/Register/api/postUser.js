@@ -1,16 +1,21 @@
-import axios from 'axios';
-import { useMutation, useQueryClient } from 'react-query';
+import { useMutation } from 'react-query';
+import { useDispatch } from 'react-redux';
+import axios from '../../../lib/axios';
+import { storeAuthToken, removeInitialUser } from '../../../store/actions';
 
-const queryClient = useQueryClient();
+export const postUser = body => axios.post('/user', body).then(res => res.data);
 
-export const postUser = data => axios.post('/user', { ...data });
-
-export const usePostUser = () =>
-  useMutation(postUser, {
-    onError: () => {
-      // Push error notification to redux
+export const usePostUser = () => {
+  const dispatch = useDispatch();
+  return useMutation(postUser, {
+    onSuccess: data => {
+      dispatch(removeInitialUser());
+      dispatch(storeAuthToken(data.accessToken));
     },
-    onSuccess: () => {
-      queryClient.invalidateQueries('user');
+    onError: err => {
+      // Push error notification to redux
+      console.log('Error : ', err);
+      console.log('Some Error Occured');
     }
   });
+};
