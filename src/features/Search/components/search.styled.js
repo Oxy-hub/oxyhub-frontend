@@ -25,7 +25,7 @@ export const Header = styled.h1`
   text-align: center;
 `;
 
-export const DropdownContainer = styled.div`
+export const DropdownContainer = styled.form`
   // border: 2px solid red;
   display: flex;
   justify-content: space-between;
