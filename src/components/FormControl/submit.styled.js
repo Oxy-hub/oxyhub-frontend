@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import pallete from '../../utils/pallete';
 
 export default styled.button`
   outline: none;
@@ -12,11 +11,8 @@ export default styled.button`
   cursor: pointer;
   color: white;
   border-radius: 5px;
-  background-color: ${props =>
-    !props.isLoading ? pallete.primary : '#000000'};
+  background-color: ${({ theme }) => theme.primary};
   box-shadow: 0px 12px 24px -12px rgba(255, 114, 94, 0.5);
-  -webkit-box-shadow: 0px 12px 24px -12px rgba(255, 114, 94, 0.5);
   transition: opacity 150ms ease-in-out;
-
   ${props => props.disabled && `opacity: 85%;`}
 `;
