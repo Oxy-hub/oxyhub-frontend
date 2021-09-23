@@ -5,9 +5,11 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import { BrowserRouter } from 'react-router-dom';
 import WebFont from 'webfontloader';
 import { Helmet } from 'react-helmet';
+import { ThemeProvider } from 'styled-components';
 import queryClient from './lib/react-query';
 import './app.scss';
 import store from './store';
+import pallete from './utils/pallete';
 import AppRoutes from './routes';
 
 const App = () => {
@@ -24,8 +26,10 @@ const App = () => {
     <BrowserRouter>
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
-          <Helmet title="Oxyhub - Book Oxygen Cylinders Online" />
-          <AppRoutes />
+          <ThemeProvider theme={pallete}>
+            <Helmet title="Oxyhub - Book Oxygen Cylinders Online" />
+            <AppRoutes />
+          </ThemeProvider>
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
       </Provider>
