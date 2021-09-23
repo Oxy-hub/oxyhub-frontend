@@ -24,12 +24,12 @@ exports[`<Login/> Snapshot test for the Login 1`] = `
           className="sc-iBPTik dALqrY"
         >
           <h1
-            className="sc-fubCzh kSlETI"
+            className="sc-fubCzh hNoICq"
           >
             Let's Get Started
           </h1>
           <p
-            className="sc-pGacB kbSkMj"
+            className="sc-pGacB hxeaLi"
           >
             Continue with your favourite social media
           </p>

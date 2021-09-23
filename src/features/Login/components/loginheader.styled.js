@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import pallete from '../../../utils/pallete';
 
 export const HeaderContainer = styled.div`
   text-align: center;
@@ -7,10 +6,10 @@ export const HeaderContainer = styled.div`
 `;
 export const Heading = styled.h1`
   font-size: 1.5rem;
-  color: ${pallete.fontBlack};
+  color: ${({ theme }) => theme.fontBlack};
 `;
 
 export const Subheading = styled.p`
   font-size: 1rem;
-  color: ${pallete.fontPrimary};
+  color: ${({ theme }) => theme.fontPrimary};
 `;
