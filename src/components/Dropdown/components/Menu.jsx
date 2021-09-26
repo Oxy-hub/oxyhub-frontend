@@ -1,14 +1,15 @@
 import PropType from 'prop-types';
+import Skeleton from 'react-loading-skeleton';
 import { v4 as uuid } from 'uuid';
 import { MenuItem, List } from './menu.styled';
 
-const Menu = ({ options, isLoading, onClickCallback }) => (
+const Menu = ({ options = Array(5).fill(5), isLoading, onClickCallback }) => (
   <List>
-    {isLoading ? (
-      <p>Loading</p>
-    ) : (
-      options.map(option => (
-        <li key={uuid()}>
+    {options.map(option => (
+      <li key={uuid()}>
+        {isLoading ? (
+          <Skeleton height={25} style={{ marginBottom: '10px' }} />
+        ) : (
           <MenuItem
             type="button"
             onClick={() => {
@@ -17,9 +18,9 @@ const Menu = ({ options, isLoading, onClickCallback }) => (
           >
             {option.name}
           </MenuItem>
-        </li>
-      ))
-    )}
+        )}
+      </li>
+    ))}
   </List>
 );
 
