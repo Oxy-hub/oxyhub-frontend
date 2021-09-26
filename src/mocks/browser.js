@@ -4,7 +4,14 @@ import auth from './routes/auth';
 import refresh from './routes/refresh';
 import user from './routes/user';
 import states from './routes/states';
+import districts from './routes/district';
 
-const worker = setupWorker(...auth, ...refresh, ...user, ...states);
+const worker = setupWorker(
+  ...auth,
+  ...refresh,
+  ...user,
+  ...states,
+  ...districts
+);
 
 export default worker;
