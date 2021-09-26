@@ -8,7 +8,11 @@ const Menu = ({ options = Array(5).fill(5), isLoading, onClickCallback }) => (
     {options.map(option => (
       <li key={uuid()}>
         {isLoading ? (
-          <Skeleton height={25} style={{ marginBottom: '10px' }} />
+          <Skeleton
+            height={23}
+            width={`${Math.random() * (100 - 50) + 50}%`}
+            style={{ marginBottom: '10px' }}
+          />
         ) : (
           <MenuItem
             type="button"
