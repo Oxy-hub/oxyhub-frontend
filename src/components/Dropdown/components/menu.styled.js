@@ -31,7 +31,8 @@ export const List = styled.ul`
   }
 `;
 
-export const MenuItem = styled.button`
+export const MenuItem = styled.span`
+  display: block;
   width: 100%;
   padding: 0.5em 0.4em;
   border: none;
