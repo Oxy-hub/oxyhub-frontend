@@ -12,11 +12,11 @@ const districts = {
   2: [
     {
       id: 1,
-      name: 'Random1'
+      name: 'Random21'
     },
     {
       id: 2,
-      name: 'Random2'
+      name: 'Random22'
     }
   ],
   3: [
@@ -32,51 +32,51 @@ const districts = {
   4: [
     {
       id: 1,
-      name: 'Random31'
+      name: 'Random41'
     },
     {
       id: 2,
-      name: 'Random32'
+      name: 'Random42'
     }
   ],
   5: [
     {
       id: 1,
-      name: 'Random31'
+      name: 'Random51'
     },
     {
       id: 2,
-      name: 'Random32'
+      name: 'Random52'
     }
   ],
   6: [
     {
       id: 1,
-      name: 'Random31'
+      name: 'Random61'
     },
     {
       id: 2,
-      name: 'Random32'
+      name: 'Random62'
     }
   ],
   7: [
     {
       id: 1,
-      name: 'Random31'
+      name: 'Random71'
     },
     {
       id: 2,
-      name: 'Random32'
+      name: 'Random72'
     }
   ]
 };
 
 const getDistricts = (req, res, ctx) => {
-  console.log('State ID:', req.url.searchParams.get('id'));
+  console.log('State ID:', req.url.searchParams.get('state'));
 
   return res(
     ctx.delay(5000),
-    ctx.json(districts[req.url.searchParams.get('id')])
+    ctx.json(districts[req.url.searchParams.get('state')])
   );
 };
 
