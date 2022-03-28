@@ -18,6 +18,8 @@ const Callback = () => {
   const inMemState = localStorage.getItem('state');
   localStorage.removeItem('state');
 
+  console.log('Code', code);
+
   useEffect(() => {
     // When no code/state is present in query string,then redirect to the homepage
     if (code && state && inMemState === state) {

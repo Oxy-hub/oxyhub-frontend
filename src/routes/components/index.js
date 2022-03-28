@@ -3,7 +3,7 @@ import { Switch, Redirect } from 'react-router-dom';
 // Routes Import
 import InitialRoute from './InitialRoute';
 import PublicRoute from './PublicRoute';
-import PrivateRoute from './PrivateRoute';
+// import PrivateRoute from './PrivateRoute';
 
 // Components Import
 import Login from '../../features/Login';
@@ -16,7 +16,8 @@ const Routes = () => (
     <PublicRoute exact path="/" component={Login} />
     <PublicRoute path="/auth/callback/:provider" component={Callback} />
 
-    <PrivateRoute path="/search" component={Search} />
+    {/* <PrivateRoute path="/search" component={Search} /> */}
+    <PublicRoute path="/search" component={Search} />
 
     <InitialRoute path="/register" component={Register} />
     <Redirect from="/*" to="/" />

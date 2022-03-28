@@ -6,11 +6,13 @@ import { BrowserRouter } from 'react-router-dom';
 import WebFont from 'webfontloader';
 import { Helmet } from 'react-helmet';
 import { ThemeProvider } from 'styled-components';
+import { ChakraProvider } from '@chakra-ui/react';
 import queryClient from './lib/react-query';
 import './app.scss';
 import store from './store';
 import pallete from './utils/pallete';
 import AppRoutes from './routes';
+import theme from './theme';
 
 const App = () => {
   // Web Font Loader
@@ -28,7 +30,9 @@ const App = () => {
         <QueryClientProvider client={queryClient}>
           <ThemeProvider theme={pallete}>
             <Helmet title="Oxyhub - Book Oxygen Cylinders Online" />
-            <AppRoutes />
+            <ChakraProvider theme={theme}>
+              <AppRoutes />
+            </ChakraProvider>
           </ThemeProvider>
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
