@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import config from '../../../config';
 
 const useOAuthPopup = () => {
-  const [externalPopupRef, setExternalPopupRef] = useState(null);
-  const [prevUrl, setPrevUrl] = useState(null);
-  const [message, setMessage] = useState({
+  const initialMessageState = {
     token: null,
     state: null,
     error: null
-  });
+  };
+  const [externalPopupRef, setExternalPopupRef] = useState(null);
+  const [message, setMessage] = useState(initialMessageState);
   const [openPopup, setOpenPopup] = useState(false);
 
   const postMessageHandler = e => {
@@ -24,14 +24,27 @@ const useOAuthPopup = () => {
 
   // Add an event listener for postMessage whenever popup is opened
   useEffect(() => {
+    let intervalRef = null;
     if (openPopup) {
-      console.log('Setting the event listener');
+      console.log('Setting the event listener and the interval');
       window.addEventListener('message', postMessageHandler);
+      intervalRef = setInterval(() => {
+        console.log('Checking...');
+        if (externalPopupRef.closed) {
+          console.log('Popup has been closed!');
+          setOpenPopup(false);
+        }
+      }, [500]);
+      console.log('Interval has been created with ref : ', intervalRef);
     }
 
     return () => {
-      console.log('Removing message event handler');
+      console.log(
+        'Removing message event handler and interval...',
+        intervalRef
+      );
       window.removeEventListener('message', postMessageHandler);
+      clearInterval(intervalRef);
     };
   }, [openPopup]);
 
@@ -40,10 +53,10 @@ const useOAuthPopup = () => {
     try {
       const localOAuthState = localStorage.getItem('__oAuth_state__');
       localStorage.removeItem('__oAuth_state__');
+      externalPopupRef.close();
 
       if (message.token && message.state) {
         console.log('Exchange token received successfully!');
-        externalPopupRef.close();
 
         if (localOAuthState !== message.state) {
           throw new Error();
@@ -51,8 +64,7 @@ const useOAuthPopup = () => {
 
         // Now start the backend code exchange process here and dispatch a loader
       } else if (message.error) {
-        console.log('Some error occured');
-        externalPopupRef.close();
+        console.log('Some error occured. Display Error Toast');
         // Dispatch error message toast
       }
     } catch (e) {
@@ -69,29 +81,18 @@ const useOAuthPopup = () => {
     const left = window.screen.width / 2 - POPUP_WIDTH / 2;
     const top = window.screen.height / 2 - POPUP_HEIGHT / 2;
 
-    const windowOpts = `toolbar=no, menubar=no, scrollbar=0, width=${POPUP_WIDTH}, height=${POPUP_HEIGHT}, left=${left}, top=${top}`;
+    const windowOpts = `toolbar=no, menubar=no, scrollbars=0, width=${POPUP_WIDTH}, height=${POPUP_HEIGHT}, left=${left}, top=${top}`;
 
     if (externalPopupRef === null || externalPopupRef.closed) {
-      /* if the pointer to the window object in memory does not exist
-      or if such pointer exists but the window was closed */
+      /** If a popup does not exist, or it has been closed, open a new popup */
+      console.log('Here');
       const ref = window.open(url, target, windowOpts);
       setExternalPopupRef(ref);
-    } else if (prevUrl !== url) {
-      /* if the resource to load is different,
-      then we load it in the already opened secondary window and then
-      we bring such window back on top/in front of its parent window. */
-      externalPopupRef.close();
-      const ref = window.open(url, target, windowOpts);
-      setExternalPopupRef(ref);
-    } else {
-      /* else the window reference must exist and the window
-      is not closed; therefore, we can bring it back on top of any other
-      window with the focus() method. There would be no need to re-create
-      the window or to reload the referenced resource. */
+    } else if (externalPopupRef) {
+      /** If a popup exists, replace the current popup with the new URL, and bring it to the foreground */
+      externalPopupRef.location.replace(url);
       externalPopupRef.focus();
     }
-
-    setPrevUrl(url);
   };
 
   return { openOAuthPopup };
