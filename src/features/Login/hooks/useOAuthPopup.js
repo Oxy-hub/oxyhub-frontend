@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import config from '../../../config';
+import { setLoader } from '../../../store/actions';
 
 const useOAuthPopup = () => {
   const initialMessageState = {
@@ -10,6 +12,7 @@ const useOAuthPopup = () => {
   const [externalPopupRef, setExternalPopupRef] = useState(null);
   const [message, setMessage] = useState(initialMessageState);
   const [openPopup, setOpenPopup] = useState(false);
+  const dispatch = useDispatch();
 
   const postMessageHandler = e => {
     // Check if the postMessage event origin is what we expect it to be (for security reasons)
@@ -63,6 +66,7 @@ const useOAuthPopup = () => {
         }
 
         // Now start the backend code exchange process here and dispatch a loader
+        dispatch(setLoader());
       } else if (message.error) {
         console.log('Some error occured. Display Error Toast');
         // Dispatch error message toast

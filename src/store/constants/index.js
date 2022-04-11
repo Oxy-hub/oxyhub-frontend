@@ -9,3 +9,6 @@ export const REMOVE_USER = 'REMOVE_USER';
 export const STORE_STATE = 'STORE_CHOICE';
 export const STORE_DISTRICT = 'STORE_CHOICE';
 export const STORE_TYPE = 'STORE_TYPE';
+
+export const SET_LOADER = 'SET_LOADER';
+export const UNSET_LOADER = 'UNSET_LOADER';
