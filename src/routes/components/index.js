@@ -10,6 +10,7 @@ import Login from '../../features/Login';
 import Register from '../../features/Register';
 import Callback from '../../features/Callback';
 import Search from '../../features/Search';
+import MyProfile from '../../features/Profile';
 
 const Routes = () => (
   <Switch>
@@ -18,6 +19,9 @@ const Routes = () => (
 
     {/* <PrivateRoute path="/search" component={Search} /> */}
     <PublicRoute path="/search" component={Search} />
+
+    {/* <PrivateRoute path="/myprofile" component={MyProfile} /> */}
+    <PublicRoute path="/myprofile" component={MyProfile} />
 
     <InitialRoute path="/register" component={Register} />
     <Redirect from="/*" to="/" />

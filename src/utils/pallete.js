@@ -1,5 +1,6 @@
 const pallete = {
   primary: '#ff725e',
+  secondary: '#00BB8C',
   primaryFaded: '#ff725e30',
   fontPrimary: '#717780',
   fontBlack: '#414141',
