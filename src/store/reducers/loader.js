@@ -3,7 +3,7 @@ import { SET_LOADER, UNSET_LOADER } from '../constants';
 const initialState = false;
 
 // eslint-disable-next-line
-export const globalLoader = (state = initialState, action) => {
+export const globalLoaderReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_LOADER: {
       return !state;
