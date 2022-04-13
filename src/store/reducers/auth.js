@@ -20,9 +20,10 @@ export const authReducer = (state = initialState, action) => {
     }
 
     case STORE_INITIAL_USER: {
-      const initialUserInfo = action.payload;
+      const { initialUserInfo, accessToken } = action.payload;
       return {
         ...state,
+        accessToken,
         initialUserInfo,
         isInitial: true
       };

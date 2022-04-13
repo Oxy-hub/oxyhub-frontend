@@ -17,7 +17,12 @@ const useAuth = dispatch =>
     onSuccess: data => {
       const { data: response } = data;
       if (response.is_initial) {
-        dispatch(storeInitialUser(response.user));
+        dispatch(
+          storeInitialUser({
+            initialUserInfo: response.user,
+            accessToken: response.access_token
+          })
+        );
         // navigate('/register');
       } else {
         dispatch(storeAuthToken(response.accessToken));
