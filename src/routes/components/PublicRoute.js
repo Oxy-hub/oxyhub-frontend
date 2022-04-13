@@ -1,7 +1,6 @@
 import { Navigate } from 'react-router-dom';
 import PropType from 'prop-types';
 import { useSelector } from 'react-redux';
-import Layout from '../../components/common/Layout';
 
 const PublicRoute = ({ children }) => {
   const { isAuthenticated, isInitial } = useSelector(state => state.auth);
@@ -14,7 +13,7 @@ const PublicRoute = ({ children }) => {
     return <Navigate to="/register" />;
   }
 
-  return <Layout>{children}</Layout>;
+  return children;
 };
 
 export default PublicRoute;
