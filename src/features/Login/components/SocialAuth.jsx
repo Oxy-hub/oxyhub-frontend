@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { SocialAuthContainer, ButtonContainer } from './socialauth.styled';
 import LoginHeader from './LoginHeader';
@@ -10,17 +11,28 @@ import useAuth from '../api/auth';
 const LoginForm = () => {
   const dispatch = useDispatch();
   const { mutate } = useAuth(dispatch);
-  // OnSuccess: DIspatch the loader,Call thee backend API with the exchange token. On SUccessfull API response, remove the loader, set the user token appropritaely. If API response fails, display toaast
-  const onSuccess = (eToken, provider) => {
+
+  const onOAuthSuccess = useCallback((token, provider) => {
     dispatch(setLoader());
-    mutate({ eToken, provider });
-  };
+    mutate({ code: token, provider });
+  }, []);
 
-  // OnError : Display toast message
+  const onOAuthError = useCallback(() => {
+    // Dispatch a toast message with the following message
+    console.log('Login Failed. Try again!');
+  }, []);
 
-  // OnStateCheckFail : Display Toast Message
+  const onOAuthStateCheckError = useCallback(() => {
+    // Dispatch a toast message with the following message
+    console.log('Login Failed. Contact Developers!');
+  }, []);
 
-  const { openOAuthPopup } = useOAuthPopup({ onSuccess });
+  const { openOAuthPopup } = useOAuthPopup({
+    onSuccess: onOAuthSuccess,
+    onError: onOAuthError,
+    onStateCheckError: onOAuthStateCheckError
+  });
+
   return (
     <SocialAuthContainer>
       <LoginHeader />
@@ -36,7 +48,7 @@ const LoginForm = () => {
               color={color}
               onClick={() => {
                 const { url, context } = helper();
-                openOAuthPopup(url, context);
+                openOAuthPopup(url, context, name);
               }}
               isLast={authProviders.length - 1 === index}
             />

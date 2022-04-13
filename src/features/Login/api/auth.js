@@ -1,20 +1,37 @@
 import { useMutation } from 'react-query';
-import { storeInitialUser, storeAuthToken } from '../../../store/actions';
+// import { useNavigate } from 'react-router-dom';
+import {
+  storeInitialUser,
+  storeAuthToken,
+  unsetLoader
+} from '../../../store/actions';
 import axios from '../../../lib/axios';
 
-export const mutationFunction = ({ body, provider }) =>
-  axios.post(`/auth/${provider}`, body).then(res => res.data);
+export const mutationFunction = ({ code, provider }) =>
+  axios.post(`/auth/login`, { code, provider }).then(res => res.data);
 
 const useAuth = dispatch =>
   useMutation(mutationFunction, {
     retry: false,
 
     onSuccess: data => {
-      if (data.isInitial) {
-        dispatch(storeInitialUser(data));
+      const { data: response } = data;
+      if (response.is_initial) {
+        dispatch(storeInitialUser(response.user));
+        // navigate('/register');
       } else {
-        dispatch(storeAuthToken(data.accessToken));
+        dispatch(storeAuthToken(response.accessToken));
+        // navigate('/search');
       }
+    },
+
+    onError: () => {
+      // Dispatch a toast message with the following message.
+      console.log('Something went wrong while trying to login!');
+    },
+
+    onSettled: () => {
+      dispatch(unsetLoader());
     }
   });
 

@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import config from '../../../config';
-import { setLoader } from '../../../store/actions';
 
-const useOAuthPopup = () => {
+const useOAuthPopup = ({ onSuccess, onError, onStateCheckError }) => {
   const initialMessageState = {
     token: null,
     state: null,
@@ -12,11 +10,11 @@ const useOAuthPopup = () => {
   const [externalPopupRef, setExternalPopupRef] = useState(null);
   const [message, setMessage] = useState(initialMessageState);
   const [openPopup, setOpenPopup] = useState(false);
-  const dispatch = useDispatch();
+  const [oAuthprovider, setOAuthProvider] = useState(null);
 
   const postMessageHandler = e => {
     // Check if the postMessage event origin is what we expect it to be (for security reasons)
-    if (e.origin === config.baseURL) {
+    if (e.origin === config.apiBaseUrl) {
       // If the message data contains token, then update local React state with the token and OAuth 'state'
       if (e.data.token)
         setMessage({ token: e.data.token, state: e.data.state });
@@ -56,29 +54,26 @@ const useOAuthPopup = () => {
     try {
       const localOAuthState = localStorage.getItem('__oAuth_state__');
       localStorage.removeItem('__oAuth_state__');
-      externalPopupRef.close();
 
       if (message.token && message.state) {
-        console.log('Exchange token received successfully!');
-
+        externalPopupRef.close();
         if (localOAuthState !== message.state) {
           throw new Error();
         }
-
-        // Now start the backend code exchange process here and dispatch a loader
-        dispatch(setLoader());
+        onSuccess(message.token, oAuthprovider.toLowerCase());
       } else if (message.error) {
-        console.log('Some error occured. Display Error Toast');
-        // Dispatch error message toast
+        externalPopupRef.close();
+        onError();
       }
     } catch (e) {
-      // dispatch error message toast
-      console.log('State did not match. Possible hack?');
+      console.log(e);
+      onStateCheckError();
     }
   }, [message]);
 
-  const openOAuthPopup = (url, target) => {
+  const openOAuthPopup = (url, target, provider) => {
     setOpenPopup(true);
+    setOAuthProvider(provider);
     const POPUP_WIDTH = 500;
     const POPUP_HEIGHT = 620;
 
@@ -89,7 +84,6 @@ const useOAuthPopup = () => {
 
     if (externalPopupRef === null || externalPopupRef.closed) {
       /** If a popup does not exist, or it has been closed, open a new popup */
-      console.log('Here');
       const ref = window.open(url, target, windowOpts);
       setExternalPopupRef(ref);
     } else if (externalPopupRef) {
