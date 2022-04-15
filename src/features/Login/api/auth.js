@@ -1,5 +1,4 @@
 import { useMutation } from 'react-query';
-// import { useNavigate } from 'react-router-dom';
 import {
   storeInitialUser,
   storeAuthToken,
@@ -14,19 +13,16 @@ const useAuth = dispatch =>
   useMutation(mutationFunction, {
     retry: false,
 
-    onSuccess: data => {
-      const { data: response } = data;
-      if (response.is_initial) {
+    onSuccess: ({ data }) => {
+      if (data.is_initial) {
         dispatch(
           storeInitialUser({
-            initialUserInfo: response.user,
-            accessToken: response.access_token
+            initialUserInfo: data.user,
+            accessToken: data.access_token
           })
         );
-        // navigate('/register');
       } else {
-        dispatch(storeAuthToken(response.accessToken));
-        // navigate('/search');
+        dispatch(storeAuthToken(data.access_token));
       }
     },
 
