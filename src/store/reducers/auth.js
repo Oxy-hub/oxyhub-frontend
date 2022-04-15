@@ -15,7 +15,7 @@ export const authReducer = (state = initialState, action) => {
       return {
         ...state,
         accessToken,
-        isAuth: true
+        isAuthenticated: true
       };
     }
 
