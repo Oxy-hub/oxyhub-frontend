@@ -1,35 +1,66 @@
-import { Switch, Redirect } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 // Routes Import
-import InitialRoute from './InitialRoute';
 import PublicRoute from './PublicRoute';
-// import PrivateRoute from './PrivateRoute';
+import PrivateRoute from './PrivateRoute';
+import InitialRoute from './InitialRoute';
 
 // Components Import
 import Login from '../../features/Login';
 import Register from '../../features/Register';
-import Callback from '../../features/Callback';
 import Search from '../../features/Search';
 import MyProfile from '../../features/Profile';
-import MyOrders from '../../features/MyOrders';
+// import MyOrders from '../../features/MyOrders';
+// import Callback from '../../features/Callback';
+// import MyProfile from '../../features/Profile';
 
-const Routes = () => (
-  <Switch>
-    <PublicRoute exact path="/" component={Login} />
-    <PublicRoute path="/auth/callback/:provider" component={Callback} />
+const AppRoutes = () => (
+  <Routes>
+    {/* Public Routes */}
+    <Route
+      path="/"
+      element={
+        <PublicRoute>
+          <Login />
+        </PublicRoute>
+      }
+    />
 
-    {/* <PrivateRoute path="/search" component={Search} /> */}
-    <PublicRoute path="/search" component={Search} />
+    {/* Private Routes */}
+    <Route
+      path="/search"
+      element={
+        <PrivateRoute>
+          <Search />
+        </PrivateRoute>
+      }
+    />
+    <Route
+      path="/myprofile"
+      element={
+        <PrivateRoute>
+          <MyProfile />
+        </PrivateRoute>
+      }
+    />
+
+    {/* <PublicRoute path="/search" component={Search} /> */}
 
     {/* <PrivateRoute path="/myprofile" component={MyProfile} /> */}
-    <PublicRoute path="/myprofile" component={MyProfile} />
+    {/* <PublicRoute path="/myprofile" component={MyProfile} /> */}
 
-    {/* <PrivateRoute path="/myorders" component={MyOrders} /> */}
-    <PublicRoute path="/myorders" component={MyOrders} />
+    {/* Route For Initial User */}
+    <Route
+      path="/register"
+      element={
+        <InitialRoute>
+          <Register />
+        </InitialRoute>
+      }
+    />
 
-    <InitialRoute path="/register" component={Register} />
-    <Redirect from="/*" to="/" />
-  </Switch>
+    <Route path="*" element={<Navigate to="/" />} />
+  </Routes>
 );
 
-export default Routes;
+export default AppRoutes;
