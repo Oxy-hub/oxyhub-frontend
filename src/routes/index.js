@@ -1,24 +1,27 @@
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import AppRoutes from './components';
 import Loading from '../components/common/Loader';
 import useRefresh from '../hooks/useRefresh';
-import { setLoader } from '../store/actions';
 
 const Routes = () => {
   const isLoadingGlobal = useSelector(state => state.globalLoader);
-  const dispatch = useDispatch();
-  useRefresh(dispatch);
-
-  useEffect(() => {
-    dispatch(setLoader());
-  }, []);
+  const [loadRoutes, setLoadRoutes] = useState(false);
+  useRefresh({
+    onRefreshComplete: () => {
+      setLoadRoutes(true);
+    }
+  });
 
   if (isLoadingGlobal) {
     return <Loading />;
   }
 
-  return <AppRoutes />;
+  if (loadRoutes) {
+    return <AppRoutes />;
+  }
+
+  return <Loading />;
 };
 
 export default Routes;
