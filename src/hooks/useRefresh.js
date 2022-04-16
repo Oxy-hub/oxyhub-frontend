@@ -1,30 +1,26 @@
-import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { useQuery } from 'react-query';
 import axios from '../lib/axios';
-import { storeAuthToken, unsetLoader } from '../store/actions';
+import { storeAuthToken } from '../store/actions';
 
 const refreshUser = () => axios.get('/refresh').then(res => res.data);
 
-const useRefresh = dispatch => {
-  const { isSuccess, isError, data } = useQuery('refresh', refreshUser, {
+const useRefresh = props => {
+  const { onRefreshComplete } = props;
+  const dispatch = useDispatch();
+
+  useQuery('refresh', refreshUser, {
     retry: false,
     staleTime: Infinity,
     refetchOnMount: false,
-    refetchOnWindowFocus: false
-  });
-
-  useEffect(() => {
-    if (isSuccess) {
+    refetchOnWindowFocus: false,
+    onSuccess: data => {
       dispatch(storeAuthToken(data.data.access_token));
-      dispatch(unsetLoader());
+    },
+    onSettled: () => {
+      onRefreshComplete();
     }
-  }, [isSuccess]);
-
-  useEffect(() => {
-    if (isError) {
-      dispatch(unsetLoader());
-    }
-  }, [isError]);
+  });
 };
 
 export default useRefresh;
