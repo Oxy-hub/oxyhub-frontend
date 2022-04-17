@@ -1,11 +1,20 @@
+import PropTypes from 'prop-types';
+import dayjs from 'dayjs';
 import { Box, Avatar, Center, Heading, Flex, Text } from '@chakra-ui/react';
 import pallete from '../../../utils/pallete';
 // import docBG from '../../../assets/docBg.png';
 import dummyAvatar from '../../../assets/dummyAvatar.jpg';
 
-const UserProfile = () => {
-  console.log('');
-  const name = ['First Name', 'Middle Name', 'Last Name'];
+const UserProfile = ({ response }) => {
+  const name = {
+    'First Name': response.first_name,
+    'Middle Name': response.middle_name,
+    Last_Name: response.last_name
+  };
+
+  const createdOn = dayjs(response.created_at);
+  console.log('Date : ', createdOn);
+
   return (
     <>
       {/* <Box
@@ -48,7 +57,7 @@ const UserProfile = () => {
                 sx={{ border: '3px solid #00BB8C' }}
               />
               <Heading as="h3" size="lg" ml={7} color="white">
-                Hi, Ishika
+                {`Hi, ${response.first_name}`}
               </Heading>
             </Flex>
           </Center>
@@ -64,12 +73,12 @@ const UserProfile = () => {
             <Text fontSize="md" width="30%">
               Email
             </Text>
-            <Text fontSize="lg">testuser@email.com</Text>
+            <Text fontSize="lg">{`${response.email}`}</Text>
           </Flex>
 
           <Flex width="100%" align="center">
             <Text fontSize="md" width="30%">
-              Last login
+              Created on
             </Text>
             <Text fontSize="lg">5th January,2022</Text>
           </Flex>
@@ -91,17 +100,28 @@ const UserProfile = () => {
         <Heading as="h4" size="md" mb={5} color={`${pallete.fontBlack}`}>
           Personal Details
         </Heading>
-        {name.map(n => (
+        {Object.keys(name).map(n => (
           <Flex width="100%" align="center" mb={3}>
             <Text fontSize="md" width="30%">
               {n}
             </Text>
-            <Text fontSize="lg">Ishika Mukherjee</Text>
+            <Text fontSize="lg"> {`${name[n]}`} </Text>
           </Flex>
         ))}
       </Box>
     </>
   );
 };
-
 export default UserProfile;
+
+UserProfile.propTypes = {
+  response: PropTypes.shape({
+    first_name: PropTypes.string.isRequired,
+    middle_name: PropTypes.string,
+    last_name: PropTypes.string.isRequired,
+    email: PropTypes.string,
+    avatar: PropTypes.string,
+    created_at: PropTypes.string,
+    last_login: PropTypes.string
+  }).isRequired
+};
