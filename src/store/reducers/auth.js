@@ -1,8 +1,8 @@
 import { STORE_AUTH_TOKEN, STORE_INITIAL_USER, RESET_AUTH } from '../constants';
+import { setAccessToken } from '../../lib/axios';
 
 const initialState = {
   isAuthenticated: false,
-  accessToken: null,
   isInitial: false,
   initialUserInfo: null
 };
@@ -12,18 +12,18 @@ export const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case STORE_AUTH_TOKEN: {
       const accessToken = action.payload;
+      setAccessToken(accessToken);
       return {
         ...state,
-        accessToken,
         isAuthenticated: true
       };
     }
 
     case STORE_INITIAL_USER: {
       const { initialUserInfo, accessToken } = action.payload;
+      setAccessToken(accessToken);
       return {
         ...state,
-        accessToken,
         initialUserInfo,
         isInitial: true
       };
