@@ -1,9 +1,12 @@
 import { useDispatch } from 'react-redux';
 import { useQuery } from 'react-query';
-import axios from '../lib/axios';
+import axiosInit from '../lib/axios';
 import { storeAuthToken } from '../store/actions';
 
-const refreshUser = () => axios.get('/refresh').then(res => res.data);
+const refreshUser = () => {
+  const axios = axiosInit({ authorized: false });
+  return axios.get('/refresh').then(res => res.data);
+};
 
 const useRefresh = props => {
   const { onRefreshComplete } = props;

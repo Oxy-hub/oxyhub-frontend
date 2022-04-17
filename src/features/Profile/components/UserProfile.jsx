@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import dayjs from 'dayjs';
+// import dayjs from 'dayjs';
 import { Box, Avatar, Center, Heading, Flex, Text } from '@chakra-ui/react';
 import pallete from '../../../utils/pallete';
 // import docBG from '../../../assets/docBg.png';
@@ -12,8 +12,8 @@ const UserProfile = ({ response }) => {
     Last_Name: response.last_name
   };
 
-  const createdOn = dayjs(response.created_at);
-  console.log('Date : ', createdOn);
+  // const createdOn = dayjs(response.created_at);
+  // console.log('Date : ', createdOn);
 
   return (
     <>
