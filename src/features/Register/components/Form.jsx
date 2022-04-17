@@ -9,7 +9,7 @@ const RegisterForm = () => {
   const { first_name, middle_name, last_name, email } = useSelector(
     state => state.auth.initialUserInfo
   );
-  const tempToken = useSelector(state => state.auth.accessToken);
+
   const dispatch = useDispatch();
   const { mutate } = useRegisterUser(dispatch);
 
@@ -29,7 +29,7 @@ const RegisterForm = () => {
       }}
       validationSchema={validationSchema}
       onSubmit={values => {
-        mutate({ values, token: tempToken });
+        mutate(values);
       }}
     >
       {({ isSubmitting }) => (
