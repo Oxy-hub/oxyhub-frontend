@@ -1,12 +1,12 @@
 import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
-import axiosInit from '../../../lib/axios';
+import axios from '../../../lib/axios';
 import { storeAuthToken, resetAuth } from '../../../store/actions';
 
-export const registerUser = values => {
-  const axios = axiosInit({});
-  return axios.post('/users', { ...values }).then(res => res.data);
-};
+export const registerUser = values =>
+  axios
+    .post('/users', { ...values }, { skipAuthRefresh: true })
+    .then(res => res.data);
 
 const useRegisterUser = dispatch => {
   const navigate = useNavigate();

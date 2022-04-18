@@ -4,12 +4,10 @@ import {
   storeAuthToken,
   unsetLoader
 } from '../../../store/actions';
-import axiosInit from '../../../lib/axios';
+import axios from '../../../lib/axios';
 
-export const mutationFunction = ({ code, provider }) => {
-  const axios = axiosInit({ authorized: false });
-  return axios.post(`/auth/login`, { code, provider }).then(res => res.data);
-};
+export const mutationFunction = ({ code, provider }) =>
+  axios.post(`/auth/login`, { code, provider }).then(res => res.data);
 
 const useAuth = dispatch =>
   useMutation(mutationFunction, {

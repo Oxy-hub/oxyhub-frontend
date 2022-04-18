@@ -10,6 +10,7 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.4",
+    "axios-auth-refresh": "^3.2.2",
     "crypto-random-string": "^4.0.0",
     "dayjs": "^1.11.1",
     "formik": "^2.2.9",

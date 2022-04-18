@@ -29,8 +29,10 @@ export const authReducer = (state = initialState, action) => {
       };
     }
 
-    case RESET_AUTH:
+    case RESET_AUTH: {
+      setAccessToken(null);
       return initialState;
+    }
 
     default:
       return state;
