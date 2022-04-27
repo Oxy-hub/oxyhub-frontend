@@ -1,17 +1,23 @@
-import { useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import AppRoutes from './components';
-import useRefresh from '../hooks/useRefresh';
 import Loading from '../components/common/Loader';
+import useRefresh from '../hooks/useRefresh';
 
 const Routes = () => {
-  const { pathname } = useLocation();
-  const ignoreRefreshlocation = pathname.split('/')[1];
+  const isLoadingGlobal = useSelector(state => state.globalLoader);
+  const [loadRoutes, setLoadRoutes] = useState(false);
+  useRefresh({
+    onRefreshComplete: () => {
+      setLoadRoutes(true);
+    }
+  });
 
-  const { isSuccess, isError, refreshCancelled } = useRefresh(
-    ignoreRefreshlocation
-  );
+  if (isLoadingGlobal) {
+    return <Loading />;
+  }
 
-  if (isSuccess || isError || refreshCancelled) {
+  if (loadRoutes) {
     return <AppRoutes />;
   }
 

@@ -6,14 +6,25 @@ const SocialAuthButton = ({
   icon,
   background,
   color,
-  helper,
+  onClick,
   isLast
-}) => (
-  <Button last={isLast} onClick={helper} background={background} color={color}>
-    <IconContainer>{icon}</IconContainer>
-    {text}
-  </Button>
-);
+}) => {
+  const handleButtonClick = () => {
+    onClick();
+  };
+
+  return (
+    <Button
+      last={isLast}
+      onClick={handleButtonClick}
+      background={background}
+      color={color}
+    >
+      <IconContainer>{icon}</IconContainer>
+      {text}
+    </Button>
+  );
+};
 
 export default SocialAuthButton;
 
@@ -22,6 +33,6 @@ SocialAuthButton.propTypes = {
   icon: PropTypes.element.isRequired,
   background: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
-  helper: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
   isLast: PropTypes.bool.isRequired
 };

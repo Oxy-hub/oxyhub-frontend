@@ -1,20 +1,37 @@
-import { STORE_TOKEN } from '../constants';
+import { STORE_AUTH_TOKEN, STORE_INITIAL_USER, RESET_AUTH } from '../constants';
+import { setAccessToken } from '../../lib/axios';
 
 const initialState = {
-  isAuth: false,
-  accessToken: null
+  isAuthenticated: false,
+  isInitial: false,
+  initialUserInfo: null
 };
 
 // eslint-disable-next-line
 export const authReducer = (state = initialState, action) => {
   switch (action.type) {
-    case STORE_TOKEN: {
+    case STORE_AUTH_TOKEN: {
       const accessToken = action.payload;
+      setAccessToken(accessToken);
       return {
         ...state,
-        accessToken,
-        isAuth: true
+        isAuthenticated: true
       };
+    }
+
+    case STORE_INITIAL_USER: {
+      const { initialUserInfo, accessToken } = action.payload;
+      setAccessToken(accessToken);
+      return {
+        ...state,
+        initialUserInfo,
+        isInitial: true
+      };
+    }
+
+    case RESET_AUTH: {
+      setAccessToken(null);
+      return initialState;
     }
 
     default:
