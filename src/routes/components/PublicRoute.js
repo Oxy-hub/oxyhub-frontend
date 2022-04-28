@@ -6,7 +6,8 @@ const PublicRoute = ({ children }) => {
   const { isAuthenticated, isInitial } = useSelector(state => state.auth);
 
   if (isAuthenticated) {
-    return <Navigate to="/search" />;
+    // return <Navigate to="/search" />;
+    return <Navigate to="/under-construction" />;
   }
 
   if (isInitial) {
