@@ -19,12 +19,10 @@ const LoginForm = () => {
 
   const onOAuthError = useCallback(() => {
     // Dispatch a toast message with the following message
-    console.log('Login Failed. Try again!');
   }, []);
 
   const onOAuthStateCheckError = useCallback(() => {
     // Dispatch a toast message with the following message
-    console.log('Login Failed. Contact Developers!');
   }, []);
 
   const { openOAuthPopup } = useOAuthPopup({

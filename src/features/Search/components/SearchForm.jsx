@@ -40,6 +40,7 @@ const SearchForm = () => {
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={values => {
+        // eslint-disable-next-line
         console.log(values);
       }}
     >
