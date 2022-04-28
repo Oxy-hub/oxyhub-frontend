@@ -28,7 +28,7 @@ const useAuth = dispatch =>
 
     onError: () => {
       // Dispatch a toast message with the following message.
-      console.log('Something went wrong while trying to login!');
+      // console.log('Something went wrong while trying to login!');
     },
 
     onSettled: () => {

@@ -27,23 +27,23 @@ const useOAuthPopup = ({ onSuccess, onError, onStateCheckError }) => {
   useEffect(() => {
     let intervalRef = null;
     if (openPopup) {
-      console.log('Setting the event listener and the interval');
+      // console.log('Setting the event listener and the interval');
       window.addEventListener('message', postMessageHandler);
       intervalRef = setInterval(() => {
-        console.log('Checking...');
+        // console.log('Checking...');
         if (externalPopupRef.closed) {
-          console.log('Popup has been closed!');
+          // console.log('Popup has been closed!');
           setOpenPopup(false);
         }
       }, [500]);
-      console.log('Interval has been created with ref : ', intervalRef);
+      // console.log('Interval has been created with ref : ', intervalRef);
     }
 
     return () => {
-      console.log(
-        'Removing message event handler and interval...',
-        intervalRef
-      );
+      // console.log(
+      //   'Removing message event handler and interval...',
+      //   intervalRef
+      // );
       window.removeEventListener('message', postMessageHandler);
       clearInterval(intervalRef);
     };
@@ -66,7 +66,7 @@ const useOAuthPopup = ({ onSuccess, onError, onStateCheckError }) => {
         onError();
       }
     } catch (e) {
-      console.log(e);
+      // console.log(e);
       onStateCheckError();
     }
   }, [message]);
