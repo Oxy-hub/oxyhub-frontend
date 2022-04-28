@@ -18,6 +18,7 @@ import parlors from './dummyData';
 
 const Data = props => {
   const styles = useMultiStyleConfig('Td', {});
+  // eslint-disable-next-line
   return <Td sx={styles.td} {...props} />;
 };
 
