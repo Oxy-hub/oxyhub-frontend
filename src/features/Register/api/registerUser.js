@@ -16,11 +16,11 @@ const useRegisterUser = dispatch => {
       dispatch(resetAuth());
       dispatch(storeAuthToken(data.access_token));
       navigate('/search');
-    },
-    onError: err => {
-      // Show toast message with error
-      console.log(err);
     }
+    // onError: () => {
+    //   // Show toast message with error
+    //   // console.log(err);
+    // }
   });
 };
 
