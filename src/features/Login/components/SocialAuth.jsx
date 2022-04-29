@@ -45,8 +45,8 @@ const LoginForm = () => {
               background={background}
               color={color}
               onClick={() => {
-                const { url, context } = helper();
-                openOAuthPopup(url, context, name);
+                const { url, popupContext } = helper();
+                openOAuthPopup(url, popupContext, name);
               }}
               isLast={authProviders.length - 1 === index}
             />
