@@ -1,9 +1,9 @@
-import cryptoRandomString from 'crypto-random-string';
+import { nanoid } from 'nanoid';
 import config from '../../../config';
 
 export const googleAuthHelper = () => {
   // Logic for what happens when Login with Google button is clicked
-  const state = cryptoRandomString({ length: 10, type: 'url-safe' });
+  const state = nanoid(10);
   const CLIENT_ID = config.google.clientId;
   const SCOPE = config.google.scope;
   const REDIRECT_URL = config.google.redirectUrl;
@@ -18,7 +18,7 @@ export const googleAuthHelper = () => {
 
 export const githubAuthHelper = () => {
   // Logic for what happens when Login with Github button is clicked
-  const state = cryptoRandomString({ length: 10, type: 'url-safe' });
+  const state = nanoid(10);
 
   const CLIENT_ID = config.github.clientId;
   const SCOPE = config.github.scope;
