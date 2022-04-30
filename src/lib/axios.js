@@ -27,10 +27,12 @@ Axios.interceptors.request.use(config => {
 
 const refreshAuthLogic = failedRequest => {
   if (failedRequest.response.data.error.errors[0] === 'Access token expired')
-    return Axios.get('/refresh', { skipAuthRefresh: true }).then(({ data }) => {
-      setAccessToken(data.access_token);
-      return Promise.resolve();
-    });
+    return Axios.get('/refresh', { skipAuthRefresh: true }).then(
+      ({ data: { data: payload } }) => {
+        setAccessToken(payload.access_token);
+        return Promise.resolve();
+      }
+    );
   return Promise.reject();
 };
 
