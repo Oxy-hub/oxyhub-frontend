@@ -7,6 +7,7 @@ import WebFont from 'webfontloader';
 import { Helmet } from 'react-helmet';
 import { ThemeProvider } from 'styled-components';
 import { ChakraProvider } from '@chakra-ui/react';
+import LogoutAllTabs from './components/wrappers/LogoutAllTabs';
 import queryClient from './lib/react-query';
 import './app.scss';
 import store from './store';
@@ -31,7 +32,9 @@ const App = () => {
           <ThemeProvider theme={pallete}>
             <Helmet title="Oxyhub - Book Oxygen Cylinders Online" />
             <ChakraProvider theme={theme}>
-              <AppRoutes />
+              <LogoutAllTabs>
+                <AppRoutes />
+              </LogoutAllTabs>
             </ChakraProvider>
           </ThemeProvider>
           <ReactQueryDevtools initialIsOpen={false} />
