@@ -1,58 +1,17 @@
-import {
-  Table,
-  Thead,
-  Tbody,
-  // Tfoot,
-  Tr,
-  Th,
-  Td,
-  Box,
-  // TableCaption
-  Button,
-  // StylesProvider,
-  useMultiStyleConfig
-  // useStyles
-} from '@chakra-ui/react';
-// import { ResultFeatureContainer } from './result.styled';
-import parlors from './dummyData';
+import DataGrid from 'react-data-grid';
 
-const Data = props => {
-  const styles = useMultiStyleConfig('Td', {});
-  // eslint-disable-next-line
-  return <Td sx={styles.td} {...props} />;
-};
+const columns = [
+  { key: 'id', name: 'ID' },
+  { key: 'title', name: 'Title' }
+];
 
-const Result = () => (
-  <Box mt="5rem" bg="white" borderRadius="10px" p="6" boxShadow="md">
-    <Table>
-      <Thead>
-        <Tr>
-          <Th>Name</Th>
-          <Th>State</Th>
-          <Th>District</Th>
-          <Th>Location</Th>
-          <Th>Available</Th>
-          <Th>Know More</Th>
-        </Tr>
-      </Thead>
-      <Tbody>
-        {parlors.p1.map(parlor => (
-          <Tr key={parlor.id} sx={{ paddingTop: '0px' }}>
-            <Data>{parlor.name}</Data>
-            <Data>{parlor.state}</Data>
-            <Data>{parlor.district}</Data>
-            <Data>{parlor.location}</Data>
-            <Data>{parlor.available}</Data>
-            <Data>
-              <Button colorScheme="#ff725e" variant="outline">
-                Click here!
-              </Button>
-            </Data>
-          </Tr>
-        ))}
-      </Tbody>
-    </Table>
-  </Box>
+const rows = [
+  { id: 0, title: 'Example' },
+  { id: 1, title: 'Demo' }
+];
+
+const Table = () => (
+  <DataGrid columns={columns} rows={rows} className="rdg-light" />
 );
 
-export default Result;
+export default Table;
