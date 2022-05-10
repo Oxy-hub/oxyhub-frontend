@@ -6,6 +6,7 @@
     "@chakra-ui/react": "^1.8.8",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
+    "@fontsource/poppins": "^4.5.8",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -33,7 +34,6 @@
     "styled-components": "^5.3.5",
     "uuid": "^8.3.2",
     "web-vitals": "^1.1.2",
-    "webfontloader": "^1.6.28",
     "yup": "^0.32.11"
   },
   "scripts": {
