@@ -8,8 +8,9 @@ import InitialRoute from './InitialRoute';
 // Components Import
 import Login from '../../features/Login';
 import Register from '../../features/Register';
-import Search from '../../features/Search';
-import MyProfile from '../../features/Profile';
+// import Search from '../../features/Search';
+// import MyProfile from '../../features/Profile';
+import UnderConstruction from '../../features/UnderConstruction';
 // import MyOrders from '../../features/MyOrders';
 // import Callback from '../../features/Callback';
 // import MyProfile from '../../features/Profile';
@@ -26,8 +27,18 @@ const AppRoutes = () => (
       }
     />
 
-    {/* Private Routes */}
+    {/* Private Route */}
     <Route
+      path="/under-construction"
+      element={
+        <PrivateRoute>
+          <UnderConstruction />
+        </PrivateRoute>
+      }
+    />
+
+    {/* Private Routes */}
+    {/* <Route
       path="/search"
       element={
         <PrivateRoute>
@@ -42,7 +53,7 @@ const AppRoutes = () => (
           <MyProfile />
         </PrivateRoute>
       }
-    />
+    /> */}
 
     {/* <PublicRoute path="/search" component={Search} /> */}
 
