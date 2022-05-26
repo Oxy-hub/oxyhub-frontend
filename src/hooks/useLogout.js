@@ -1,18 +1,15 @@
 import { useMutation } from 'react-query';
-import { useNavigate } from 'react-router-dom';
 import axios from '../lib/axios';
-import { resetAuth, unsetLoader } from '../store/actions';
+import useBrodcastChannel from './useBrodcastChannel';
 
 const logoutUser = () => axios.post('/logout');
 
-const useLogout = dispatch => {
-  const navigate = useNavigate();
+const useLogout = () => {
+  const { postMessage } = useBrodcastChannel('auth');
 
   return useMutation(logoutUser, {
     onSuccess: () => {
-      dispatch(resetAuth());
-      navigate('/');
-      dispatch(unsetLoader());
+      postMessage('logout');
     }
   });
 };

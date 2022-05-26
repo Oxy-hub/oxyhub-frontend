@@ -14,7 +14,6 @@ const useRefresh = props => {
     retry: false,
     staleTime: Infinity,
     refetchOnMount: false,
-    refetchOnWindowFocus: false,
     onSuccess: data => {
       dispatch(storeAuthToken(data.data.access_token));
     },

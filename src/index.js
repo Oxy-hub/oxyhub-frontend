@@ -1,6 +1,4 @@
-import React from 'react';
-// import { createRoot } from 'react-dom/client';
-import * as ReactDOM from 'react-dom/client';
+import ReactDom from 'react-dom';
 import App from './App';
 // import config from './config';
 // import worker from './mocks/browser';
@@ -16,6 +14,9 @@ import App from './App';
 //   ReactDom.render(<App />, document.getElementById('root'));
 // });
 
-const container = document.getElementById('root');
-const root = ReactDOM.createRoot(container);
-root.render(<App />);
+// React-18
+// const container = document.getElementById('root');
+// const root = ReactDOM.createRoot(container);
+// root.render(<App />);
+
+ReactDom.render(<App />, document.getElementById('root'));
