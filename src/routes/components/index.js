@@ -10,6 +10,7 @@ import Login from '../../features/Login';
 import Register from '../../features/Register';
 import Search from '../../features/Search';
 import MyProfile from '../../features/Profile';
+import ParlourDetails from '../../features/ParlourDetails';
 // import MyOrders from '../../features/MyOrders';
 // import Callback from '../../features/Callback';
 // import MyProfile from '../../features/Profile';
@@ -40,6 +41,14 @@ const AppRoutes = () => (
       element={
         <PrivateRoute>
           <MyProfile />
+        </PrivateRoute>
+      }
+    />
+    <Route
+      path="/parlourdetails"
+      element={
+        <PrivateRoute>
+          <ParlourDetails />
         </PrivateRoute>
       }
     />
