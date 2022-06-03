@@ -2,15 +2,16 @@ import { extendTheme } from '@chakra-ui/react';
 
 import fonts from './fonts';
 import colors from './colors';
+import global from './global';
 
 const theme = extendTheme({
+  ...fonts,
   ...colors,
-  ...fonts
+  styles: {
+    ...global
+  }
 });
 
-console.log({
-  ...colors,
-  ...fonts
-});
+console.log('Theme : ', theme);
 
 export default theme;
