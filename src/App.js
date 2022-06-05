@@ -1,4 +1,3 @@
-import '@fontsource/poppins';
 import AppRoutes from './routes';
 import Providers from './providers';
 
