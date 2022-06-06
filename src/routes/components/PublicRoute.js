@@ -1,6 +1,6 @@
-import { Navigate } from 'react-router-dom';
 import PropType from 'prop-types';
 import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 
 const PublicRoute = ({ children }) => {
   const { isAuthenticated, isInitial } = useSelector(state => state.auth);
