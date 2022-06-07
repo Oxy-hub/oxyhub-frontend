@@ -19,7 +19,7 @@ const ParlourDetails = () => (
       spacing={4}
       templateColumns="5fr 7fr"
       alignItems="center"
-      mb={13.5}
+      mb={10}
     >
       <Box>
         <Image
@@ -47,10 +47,10 @@ const ParlourDetails = () => (
         </Box>
 
         <Box mb={10}>
-          <Text textStyle="omegaSemibold" as="p">
+          <Text textStyle="omegaSemibold" as="p" mb={2}>
             Proprietor :
           </Text>
-          <Text textStyle="omega" as="p">
+          <Text textStyle="omega" as="p" mb={2}>
             Mr. Sabyasachi Karmakar
           </Text>
           <Text textStyle="omega" as="p">
@@ -63,10 +63,10 @@ const ParlourDetails = () => (
             Variants
           </Text>
           <HStack spacing={6}>
-            <Button borderColor="danger.700">A</Button>
-            <Button borderColor="danger.700">B</Button>
-            <Button borderColor="danger.700">C</Button>
-            <Button borderColor="danger.700">D</Button>
+            <Button variant="secondary">A</Button>
+            <Button variant="secondary">B</Button>
+            <Button variant="secondary">C</Button>
+            <Button variant="secondary">D</Button>
           </HStack>
         </Box>
       </Box>
@@ -74,12 +74,10 @@ const ParlourDetails = () => (
 
     <Divider />
 
-    <Flex mt={12.5}>
+    <Flex mt={10}>
       <Box>Prices will be calculated in the next step ...</Box>
       <Spacer />
-      <Button textStyle="omegaSemibold" as="p">
-        Book Now
-      </Button>
+      <Button>Book Now</Button>
     </Flex>
   </Box>
 );
