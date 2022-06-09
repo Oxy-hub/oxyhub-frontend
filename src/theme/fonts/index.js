@@ -30,13 +30,13 @@ export default {
     omega: {
       fontWeight: 400,
       fontSize: '1rem',
-      lineHeight: '1rem',
+      lineHeight: '1.25rem',
       color: 'neutral.800'
     },
     omegaSemibold: {
       fontWeight: 500,
       fontSize: '1rem',
-      lineHeight: '1rem',
+      lineHeight: '1.25rem',
       color: 'neutral.800'
     },
     pi: {
