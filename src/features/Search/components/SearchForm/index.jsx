@@ -1,8 +1,9 @@
 // import { useState } from 'react';
-import { Box, Button, HStack } from '@chakra-ui/react';
+import { Box, HStack } from '@chakra-ui/react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Select from './Select';
+import Button from './Button';
 import { useGetStates } from '../../api/getStates';
 import { useGetParlours } from '../../api/getParlours';
 import { useGetDistricts } from '../../api/getDistricts';
@@ -86,14 +87,11 @@ const SearchForm = () => {
 
         <Box>
           <Button
-            height="100%"
-            px={10}
             onClick={() => {
               refetchParlours();
             }}
-          >
-            Search
-          </Button>
+            disabled={!user.statePreference || !user.districtPreference}
+          />
         </Box>
       </HStack>
     </Box>

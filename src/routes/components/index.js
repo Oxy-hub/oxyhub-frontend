@@ -50,7 +50,7 @@ const AppRoutes = () => (
         />
 
         <Route
-          path="/parlourdetails"
+          path="parlours/:id"
           element={
             <PrivateRoute>
               <ParlourDetails />

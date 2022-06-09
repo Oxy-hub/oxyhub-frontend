@@ -9,10 +9,10 @@ export default {
     },
     secondary: {
       700: '#16A6A6', // Brand Secondary Color
-      600: '#1BCFCF',
-      500: '#34E4E4',
-      200: '#AEF4F4',
-      100: '#D6FAFA'
+      600: '#5CC1C1',
+      500: '#8BD3D3',
+      200: '#B9E4E4',
+      100: '#E8F6F6'
     },
     success: {
       700: '#2F6846', // Brand Success Color

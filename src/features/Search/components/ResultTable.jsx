@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid';
 import { useMemo } from 'react';
 import { useTable } from 'react-table';
 import { useSelector } from 'react-redux';
+import { Link as ReactLink } from 'react-router-dom';
 // import { ErrorBoundary } from 'react-error-boundary';
 import { withErrorBoundary } from 'react-error-boundary';
 import {
@@ -14,7 +15,8 @@ import {
   Tbody,
   Button,
   Container,
-  TableContainer
+  TableContainer,
+  Link
 } from '@chakra-ui/react';
 
 import SearchPrompt from './prompts/Search';
@@ -56,8 +58,13 @@ const ResultTable = () => {
       },
       {
         Header: 'Actions',
-        accessor: 'actions',
-        Cell: () => <Button>View More</Button>
+        accessor: row => row.store_id,
+        // eslint-disable-next-line react/prop-types
+        Cell: ({ value }) => (
+          <Link as={ReactLink} to={`/parlours/${value}`}>
+            <Button>View More</Button>
+          </Link>
+        )
       }
     ],
     []
@@ -70,6 +77,7 @@ const ResultTable = () => {
       : new Array(14).fill(
           {
             name: null,
+            store_id: null,
             location: {
               address: null,
               pincode: null
