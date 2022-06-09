@@ -8,7 +8,7 @@ export default {
       100: '#FFEBE8'
     },
     secondary: {
-      700: '#006096', // Brand Secondary Color
+      700: '#16A6A6', // Brand Secondary Color
       600: '#1BCFCF',
       500: '#34E4E4',
       200: '#AEF4F4',
