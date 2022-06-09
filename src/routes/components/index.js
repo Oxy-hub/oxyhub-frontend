@@ -57,11 +57,22 @@ const AppRoutes = () => (
           }
         />
 
+        {/* temporary */}
         <Route
           path="parlours/:id"
           element={
             <PrivateRoute>
               <ParlourDetails />
+            </PrivateRoute>
+          }
+        />
+
+        {/* temporary */}
+        <Route
+          path="/orders"
+          element={
+            <PrivateRoute>
+              <MyOrders />
             </PrivateRoute>
           }
         />

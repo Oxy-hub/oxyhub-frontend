@@ -1,28 +1,23 @@
-import {
-  Box,
-  HStack,
-  Icon,
-  Heading
-  // Center
-  // VStack,
-  // Image,
-  // StackDivider,
-  // Text,
-  // Flex
-} from '@chakra-ui/react';
-import { RiDraftLine } from 'react-icons/ri';
-import pallete from '../../../utils/pallete';
-// import oxyCyl from '../../../assets/ox_cyl.png';
+import { Box, HStack, Text, Divider } from '@chakra-ui/react';
+import OrderCard from './OrderCard';
 
 const Orders = () => (
-  <Box sx={{ maxWidth: '1000px', border: '2px solid blue' }} m="0 auto">
+  <Box sx={{ maxWidth: '1100px' }} m="0 auto">
     <Box>
-      <HStack spacing="15px">
-        <Icon as={RiDraftLine} boxSize={10} color={`${pallete.primary}`} />
-        <Heading color={`${pallete.fontBlack}`} as="h3" size="lg">
-          My Orders . . .
-        </Heading>
+      <HStack spacing="15px" mb={4} mt={10}>
+        <Text textStyle="alpha" as="h1">
+          My Orders
+        </Text>
       </HStack>
+
+      <Divider />
+
+      {/* Order card */}
+      <Box mt={10}>
+        <OrderCard />
+        <OrderCard />
+        <OrderCard />
+      </Box>
     </Box>
   </Box>
 );
