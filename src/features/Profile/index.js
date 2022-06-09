@@ -1,3 +1,3 @@
-import MyProfile from './components';
+export * from './api/getProfile';
 
-export default MyProfile;
+export * from './components';

@@ -11,7 +11,7 @@ import InitialRoute from './InitialRoute';
 import Login from '../../features/Login';
 import Search from '../../features/Search';
 import Register from '../../features/Register';
-import MyProfile from '../../features/Profile';
+import { Profile } from '../../features/Profile';
 import ParlourDetails from '../../features/ParlourDetails';
 // import MyOrders from '../../features/MyOrders';
 // import Callback from '../../features/Callback';
@@ -44,7 +44,7 @@ const AppRoutes = () => (
           path="profile"
           element={
             <PrivateRoute>
-              <MyProfile />
+              <Profile />
             </PrivateRoute>
           }
         />
