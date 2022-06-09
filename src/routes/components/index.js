@@ -9,7 +9,7 @@ import InitialRoute from './InitialRoute';
 
 // Components Import
 import Login from '../../features/Login';
-import Search from '../../features/Search';
+import { Search } from '../../features/Search';
 import Register from '../../features/Register';
 import MyProfile from '../../features/Profile';
 // import MyOrders from '../../features/MyOrders';
