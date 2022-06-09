@@ -9,6 +9,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { ThemeProvider } from 'styled-components';
 import { QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 import PropType from 'prop-types';
 
