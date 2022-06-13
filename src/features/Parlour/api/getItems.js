@@ -7,5 +7,6 @@ export const fetchItems = ({ queryKey }) =>
 export const useGetItems = storeId =>
   useQuery(['items', storeId], fetchItems, {
     cacheTime: 0,
-    staleTime: 0
+    staleTime: 0,
+    refetchOnWindowFocus: 'always'
   });
