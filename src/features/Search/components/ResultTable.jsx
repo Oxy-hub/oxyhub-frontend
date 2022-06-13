@@ -54,7 +54,7 @@ const ResultTable = () => {
       {
         id: nanoid(),
         Header: 'Owner',
-        Cell: () => <h1>Sabyasachi Karmakar</h1>
+        accessor: row => row.owner_name
       },
       {
         Header: 'Actions',
