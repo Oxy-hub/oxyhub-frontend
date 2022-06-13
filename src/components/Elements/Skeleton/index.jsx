@@ -14,7 +14,7 @@ export const LoadingSkeleton = props => {
       highlightColor={theme.colors.neutral[100]}
       {...themeProps}
     >
-      <Skeleton {...rest} />
+      <Skeleton {...rest} containerClassName="skeleton-flex-grow-1" />
     </SkeletonTheme>
   );
 };
