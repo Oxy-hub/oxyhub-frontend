@@ -1,20 +1,14 @@
-import { useEffect, useState } from 'react';
-import { Box } from '@chakra-ui/react';
-import UserProfile from './UserProfile';
-import useGetProfile from '../api/getProfile';
+import { Container } from '@chakra-ui/react';
 
-const MyProfile = () => {
-  const [response, setResponse] = useState({});
-  const { data, isSuccess } = useGetProfile();
+import AccountDetails from './AccountDetails';
+import PersonalDetails from './PersonalDetails';
 
-  useEffect(() => {
-    if (data) {
-      setResponse(data.data);
-    }
-  }, [data]);
-  return (
-    <Box>{isSuccess && response && <UserProfile response={response} />}</Box>
-  );
-};
+// Wrap this component with an error boundary
 
-export default MyProfile;
+// eslint-disable-next-line import/prefer-default-export
+export const Profile = () => (
+  <Container maxW="950px" mt={12}>
+    <AccountDetails />
+    <PersonalDetails />
+  </Container>
+);

@@ -1,7 +1,6 @@
-import { Navigate } from 'react-router-dom';
 import PropType from 'prop-types';
 import { useSelector } from 'react-redux';
-// import Layout from '../../components/common/Layout';
+import { Navigate } from 'react-router-dom';
 
 const PrivateRoute = ({ children }) => {
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
