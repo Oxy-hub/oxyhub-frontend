@@ -11,7 +11,7 @@ const VariantSelector = ({ variant }) => (
   >
     <Radio value={variant.sku} size="md" isDisabled={!variant.availability}>
       <Text textStyle="epsilon">{`Variant ${variant.name} ${
-        !variant.availability && '(Out of Stock)'
+        !variant.availability ? '(Out of Stock)' : ''
       }`}</Text>
       <Text textStyle="pi">
         {`Height : ${variant.height}, Water capacity: ${variant.waterCapacity}, Oxygen capacity: ${variant.oxygenCapacity}`}

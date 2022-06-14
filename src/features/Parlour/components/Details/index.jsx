@@ -27,8 +27,6 @@ const Details = () => {
     useGetParlourDetails(id);
   const { data: itemData, isLoading: isItemLoaading } = useGetItems(id);
 
-  console.log(parlourData, isParlourLoading, itemData, isItemLoaading);
-
   return (
     <>
       <SimpleGrid
