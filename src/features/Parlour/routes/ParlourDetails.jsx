@@ -4,7 +4,6 @@ import CylinderProvider from '../providers/CylinderProvider';
 
 import Action from '../components/Action';
 import Details from '../components/Details';
-import BookingModal from '../components/BookingModal';
 
 // eslint-disable-next-line import/prefer-default-export
 export const ParlourDetails = () => (
@@ -13,7 +12,6 @@ export const ParlourDetails = () => (
       <Details />
       <Divider />
       <Action />
-      <BookingModal />
     </Container>
   </CylinderProvider>
 );

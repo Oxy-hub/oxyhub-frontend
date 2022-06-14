@@ -1,5 +1,6 @@
 import { nanoid } from 'nanoid';
-import { useContext } from 'react';
+import { useParams } from 'react-router-dom';
+import { useContext, useState, useEffect } from 'react';
 import {
   Text,
   Modal,
@@ -14,10 +15,28 @@ import {
 } from '@chakra-ui/react';
 
 import VariantSelector from './VariantSelector';
+import { useGetItems } from '../../api/getItems';
+import { useGetRazorpayOrderId } from '../../../Order';
+import { useGetParlourDetails } from '../../api/getParlour';
 import { CylinderContext } from '../../providers/CylinderProvider';
 
 const BookingModal = () => {
+  const { id } = useParams();
+  const [item, setItem] = useState([]);
   const { choice, closeModal, setSku } = useContext(CylinderContext);
+
+  const { data } = useGetParlourDetails(id);
+  const { mutate } = useGetRazorpayOrderId();
+  const { data: itemData } = useGetItems(id);
+
+  useEffect(() => {
+    setItem(
+      itemData.data.items.filter(
+        product => product.product_id === choice.productId
+      )
+    );
+    if (choice.sku) setSku(null);
+  }, [choice.productId, itemData]);
 
   return (
     <Modal isOpen={choice.isModalOpen} onClose={closeModal}>
@@ -32,8 +51,8 @@ const BookingModal = () => {
         <ModalBody>
           <RadioGroup onChange={setSku} value={choice.sku}>
             <VStack spacing={4} align="stretch">
-              {choice.variants &&
-                choice.variants.map(variant => (
+              {item.length > 0 &&
+                item[0].variants.map(variant => (
                   <VariantSelector variant={variant} key={nanoid()} />
                 ))}
             </VStack>
@@ -41,7 +60,19 @@ const BookingModal = () => {
         </ModalBody>
 
         <ModalFooter>
-          <Button colorScheme="blue" isDisabled={choice.sku === null}>
+          <Button
+            colorScheme="blue"
+            isDisabled={choice.sku === null}
+            onClick={() => {
+              mutate({
+                sku: choice.sku,
+                purchase_type: 1,
+                store_id: data.data.store_id,
+                product_id: choice.productId
+              });
+              closeModal();
+            }}
+          >
             Checkout
           </Button>
         </ModalFooter>

@@ -5,7 +5,7 @@ export const CylinderContext = createContext();
 const initalState = {
   sku: null,
   type: null,
-  variants: null,
+  productId: null,
   isModalOpen: false
 };
 
@@ -17,14 +17,14 @@ const reducer = (state, action) => {
     case 'SET_TYPE':
       return { ...state, type: action.payload };
 
+    case 'SET_PRODUCT_ID':
+      return { ...state, productId: action.payload };
+
     case 'OPEN_MODAL':
       return { ...state, isModalOpen: true };
 
     case 'CLOSE_MODAL':
       return { ...state, isModalOpen: false };
-
-    case 'SET_VARIANTS':
-      return { ...state, variants: action.payload };
 
     default:
       return state;
@@ -43,11 +43,11 @@ const CylinderProvider = ({ children }) => {
     closeModal: () => {
       dispatch({ type: 'CLOSE_MODAL' });
     },
-    setItem: type => {
-      dispatch({ type: 'SET_TYPE', payload: type });
+    setType: item => {
+      dispatch({ type: 'SET_TYPE', payload: item });
     },
-    setVariants: variants => {
-      dispatch({ type: 'SET_VARIANTS', payload: variants });
+    setProductId: productId => {
+      dispatch({ type: 'SET_PRODUCT_ID', payload: productId });
     },
     setSku: sku => {
       dispatch({ type: 'SET_SKU', payload: sku });
