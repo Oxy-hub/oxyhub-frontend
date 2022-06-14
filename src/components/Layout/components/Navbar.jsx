@@ -17,6 +17,7 @@ import {
 } from '@chakra-ui/react';
 
 import navLinks from '../utils/navLinks';
+import { ReactComponent as Logo } from '../../../assets/oxyhub_logo.svg';
 
 const Navbar = () => (
   <Box py={3.5} bg="neutral.0" boxShadow="base">
@@ -24,10 +25,8 @@ const Navbar = () => (
       <Flex align="center">
         {/* Logo */}
         {/* Needs to replaced later */}
-        <Link as={ReactLink} to="/" _hover={{}}>
-          <Box textStyle="beta" as="h2">
-            Oxyhub
-          </Box>
+        <Link as={ReactLink} to="/" _hover={{}} w="100px">
+          <Logo />
         </Link>
 
         <Spacer />

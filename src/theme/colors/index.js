@@ -29,7 +29,7 @@ export default {
       100: '#FDF4DC'
     },
     danger: {
-      700: '#7DE1F1F', // Brand Danger Color
+      700: '#DE1F1F', // Brand Danger Color
       600: '#E43E3E',
       500: '#E95E5E',
       200: '#F6BFBF',
