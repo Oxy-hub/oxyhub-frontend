@@ -12,11 +12,8 @@ import Login from '../../features/Login';
 import { Search } from '../../features/Search';
 import Register from '../../features/Register';
 import { Profile } from '../../features/Profile';
+import { ParlourDetails } from '../../features/Parlour';
 import { UnderConstruction } from '../../features/UnderConstruction';
-// import ParlourDetails from '../../features/ParlourDetails';
-// import MyOrders from '../../features/MyOrders';
-// import Callback from '../../features/Callback';
-// import MyProfile from '../../features/Profile';
 
 const AppRoutes = () => (
   <Routes>
@@ -64,7 +61,7 @@ const AppRoutes = () => (
           path="parlours/:id"
           element={
             <PrivateRoute>
-              <UnderConstruction />
+              <ParlourDetails />
             </PrivateRoute>
           }
         />

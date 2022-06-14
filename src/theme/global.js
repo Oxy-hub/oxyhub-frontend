@@ -18,6 +18,9 @@ export default {
     '*::selection': {
       color: 'white',
       background: 'primary.700'
+    },
+    '.skeleton-flex-grow-1': {
+      width: '100%'
     }
   }
 };

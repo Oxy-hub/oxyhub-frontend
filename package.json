@@ -27,6 +27,7 @@
     "react-icons": "^4.3.1",
     "react-loading-skeleton": "^3.1.0",
     "react-query": "^3.34.20",
+    "react-razorpay": "^1.1.5",
     "react-redux": "^7.2.8",
     "react-router-dom": "^6.3.0",
     "react-scripts": "^5.0.1",

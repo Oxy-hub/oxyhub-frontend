@@ -4,7 +4,7 @@ export default {
     dialog: { px: 4 },
 
     footer: {
-      px: 0,
+      // px: 0,
       borderTop: `1px solid ${theme.colors.neutral[150]}`
     }
   })
