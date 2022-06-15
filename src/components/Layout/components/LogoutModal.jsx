@@ -5,6 +5,7 @@ import {
   Text,
   Modal,
   Button,
+  HStack,
   VStack,
   ModalBody,
   ModalFooter,
@@ -41,9 +42,13 @@ const LogoutModal = props => {
 
           {/* Modal Footer Content */}
           <ModalFooter>
-            {/* Buttons should be updated after variant is set */}
-            <Button onClick={onClose}>Close</Button>
-            <Button onClick={logout}>Logout</Button>
+            <HStack spacing={4}>
+              {/* Buttons should be updated after variant is set */}
+              <Button onClick={onClose} variant="secondary">
+                Close
+              </Button>
+              <Button onClick={logout}>Logout</Button>
+            </HStack>
           </ModalFooter>
         </ModalContent>
       </Modal>
