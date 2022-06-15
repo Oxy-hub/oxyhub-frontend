@@ -11,9 +11,10 @@ import InitialRoute from './InitialRoute';
 import Login from '../../features/Login';
 import { Search } from '../../features/Search';
 import Register from '../../features/Register';
+import { MyOrders } from '../../features/Order';
 import { Profile } from '../../features/Profile';
 import { ParlourDetails } from '../../features/Parlour';
-import { UnderConstruction } from '../../features/UnderConstruction';
+// import { UnderConstruction } from '../../features/UnderConstruction';
 
 const AppRoutes = () => (
   <Routes>
@@ -49,19 +50,19 @@ const AppRoutes = () => (
         />
 
         <Route
-          path="orders"
+          path="parlours/:id"
           element={
             <PrivateRoute>
-              <UnderConstruction />
+              <ParlourDetails />
             </PrivateRoute>
           }
         />
 
         <Route
-          path="parlours/:id"
+          path="orders"
           element={
             <PrivateRoute>
-              <ParlourDetails />
+              <MyOrders />
             </PrivateRoute>
           }
         />
