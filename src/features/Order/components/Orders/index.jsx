@@ -18,7 +18,7 @@ const Orders = () => {
         <Divider />
 
         {/* Order card */}
-        <VStack spacing={5} align="stretch">
+        <VStack spacing={8} align="stretch">
           {orderData.data.orders.map(order =>
             isFetching ? (
               <LoadingSkeleton height={230} />

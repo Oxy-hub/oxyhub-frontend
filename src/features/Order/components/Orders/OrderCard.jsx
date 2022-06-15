@@ -36,7 +36,13 @@ const OrderCard = ({ order }) => {
   };
 
   return (
-    <Box borderRadius="4px" border="2px dashed" borderColor="neutral.500">
+    <Box
+      shadow="lg"
+      borderRadius="4px"
+      bgColor="neutral.0"
+      border="2px dashed"
+      borderColor="neutral.500"
+    >
       {/* Card Header Section */}
       <Box
         px={7}
