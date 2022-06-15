@@ -2,12 +2,15 @@ import useRazorpay from 'react-razorpay';
 import { useNavigate } from 'react-router-dom';
 
 import config from '../../../config';
+import useChakraToast from '../../../hooks/useChakraToast';
 import { usePutRazorpayConfirmation } from '../api/putRazorpayConfirmation';
 
 const usePayment = () => {
   const Razorpay = useRazorpay();
   const navigate = useNavigate();
   const { mutate } = usePutRazorpayConfirmation();
+
+  const { toast, toastOptions } = useChakraToast();
 
   const makePayment = ({ ...rest }) => {
     const rzp1 = new Razorpay({
@@ -24,14 +27,20 @@ const usePayment = () => {
       },
       modal: {
         ondismiss() {
-          // redirect to orders
+          toast({
+            title: 'Payment Failed!',
+            status: toastOptions.error
+          });
           navigate('/orders');
         }
       }
     });
 
     rzp1.on('payment.failed', () => {
-      // redirect to orders
+      toast({
+        title: 'Payment Failed!',
+        status: toastOptions.error
+      });
       navigate('/orders');
     });
 
